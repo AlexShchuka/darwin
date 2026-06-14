@@ -6,11 +6,11 @@ home vs grounding (§B discipline): `κ` points are `home` — WHERE a gene live
 ## Anatomy (package = gene)
 ```
 G-authproxy  FACT  α_M: HTTP proxy injects Anthropic headers host-side; real token never enters container;
-                        per-session key; constant-time compare   →security ⊣G-obs  κ:engine/authproxy/authproxy.go:1   [SECURITY]
+                        per-session key; constant-time compare   →security ⊣G-obs  κ:engine/authproxy/authproxy.go   [SECURITY]
 G-harness    FACT  α_M: install-actions + probe-scripts; installs harness N INTO M (InstallActions, StartMarkerHash)
-                        →M↔N coupling: expresses N into env(M)  κ:engine/harness/harness.go:1   [wiring gene: mechanical install, ¬asymmetric life-dependence (§A.6/§F)]
-G-membackup  FACT  α_M: syncs ~/.claude memory container→host-repo (Save)  →knowledge persistence  κ:engine/membackup/membackup.go:1   [allele of G-know]
-G-obs        FACT  α_M: thread-safe observable state-map of subsystem health + slog single sink  →observability(G5)  κ:internal/obs/obs.go:1   [allele of G-obs+]
+                        →M↔N coupling: expresses N into env(M)  κ:engine/harness/harness.go   [wiring gene: mechanical install, ¬asymmetric life-dependence (§A.6/§F)]
+G-membackup  FACT  α_M: syncs ~/.claude memory container→host-repo (Save)  →knowledge persistence  κ:engine/membackup/membackup.go   [allele of G-know]
+G-obs        FACT  α_M: thread-safe observable state-map of subsystem health + slog single sink  →observability(G5)  κ:internal/obs/obs.go   [allele of G-obs+]
 G-config     FACT  α_M: G4 tunables (LocalLLM*, Sock…)  κ:engine/config/config.go
 G-exec       FACT  α_M: Runner port — sole os/exec home (forbidigo)  κ:engine/exec
 G-localllm   FACT  α_M: bridge + local-offload MCP (155 LoC)  κ:engine/localllm   [= quartet G-loc]
@@ -29,9 +29,9 @@ G-tui        FACT  α_M: TUI (app/screens/router/strings/styles/components/frame
 
 ## Compression-quartet alleles in M
 ```
-G-rtk  α_M: provision rtk-config + PreToolUse hook install   κ:~/.claude/settings.json:39
-G-hed  α_M: provision headroom (ANTHROPIC_BASE_URL→:8787)     κ:engine/provision/headroom.go:62
-G-cav  α_M: catalog-present — config/skills.txt:2 + test/token_opt.bats:31 [FACT]; gap = per-tool provision-step / session-flag wiring [HYPO]   (earlier "∉ M, grep ∅" was FALSE — grep excluded .txt)
+G-rtk  α_M: provision rtk-config + PreToolUse hook install   κ:~/.claude/settings.json
+G-hed  α_M: provision headroom (ANTHROPIC_BASE_URL→:8787)     κ:engine/provision/headroom.go
+G-cav  α_M: catalog-present — config/skills.txt + test/token_opt.bats [FACT]; gap = per-tool provision-step / session-flag wiring [HYPO]   (earlier "∉ M, grep ∅" was FALSE — grep excluded .txt)
 G-loc  = G-localllm
 channel-disjoint(tool-out, API-window, agent-out, ∅) ⇒ ¬duplication   [FACT]
 ```
@@ -61,6 +61,7 @@ INV-F  bound IO ¬human-wait         home: notify 4xx-permanent + capped-retry t
 ```
 
 ## Ledger
-FACT: all packages exist (listing) + package-doc read for authproxy/harness/membackup/obs/localllm. caveman ∈ M (config/skills.txt:2 + test/token_opt.bats:31) — earlier "grep ∅" was a FALSE FACT (grep excluded .txt); CORRECTED. ASSOC: role of claudeauth/status (name-only).
+FACT: all packages exist (listing) + package-doc read for authproxy/harness/membackup/obs/localllm. caveman ∈ M (config/skills.txt + test/token_opt.bats) — earlier "grep ∅" was a FALSE FACT (grep excluded .txt); CORRECTED. ASSOC: role of claudeauth/status (name-only).
 CONFLICT-1 RESOLVED (PR#134): W1 landed integration-only — NO auto-offload hook (D5/D6 honored); caveman↔localLLM stay distinct alleles (§H quartet, channel-disjoint).
-CONFLICT-2 RESOLVED (PR#134) [#30]: the owner approved the W1–W7 iteration ⇒ the config-driven design-reversal is accepted; the localllm constants are now env-overridable with the prior hardcoded values as defaults, and SanitizeOutput crosses the model-output trust boundary. FOLLOW-UP (mirabilis doc, ¬genome): AGENTS.md:23-26 "intentional and hardcoded" wording is now stale (config-driven default) — fix in a mirabilis doc pass.
+CONFLICT-2 RESOLVED (PR#134) [#30]: the owner approved the W1–W7 iteration ⇒ the config-driven design-reversal is accepted; the localllm constants are now env-overridable with the prior hardcoded values as defaults, and SanitizeOutput crosses the model-output trust boundary. FOLLOW-UP (mirabilis doc, ¬genome): AGENTS.md "intentional and hardcoded" wording is now stale (config-driven default) — fix in a mirabilis doc pass.
+ROT-HYGIENE (iter-2): volatile `:line` suffixes stripped from κ package-homes in THIS registry (the package is the home; the line rots — §B). NOT cleaned here (deferred): PR-status provenance — e.g. the `PR#134` landing-refs above belong in archive Provenance — and the ~85 file:line refs across DEPT plans. NB `[#30]` etc. are stable invariant-ids, not issue numbers (archive Provenance). Plans are file-actionable *by design*, so whether plan-homes count as rot is an owner call, not assumed here.

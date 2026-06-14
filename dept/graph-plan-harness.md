@@ -15,7 +15,7 @@ The order below is **not negotiable by preference**: until `R→S` is closed, IN
 
 ## 0 — Ordering by leverage (strict)
 
-Priority order: V1 (close R→S) ≻ {INV-A, INV-B, INV-C via harness-improve} ≻ V6 (formal-spec) ≻ V7 (SDL). Nothing in {INV-*, V6, V7} is selectable until R→S is closed [the R→S audit §8].
+Priority order: V1 (close R→S) ≻ {INV-A/B/C, the interference anti-genes INV-S/V/P/K (registry-N), constants→functions (§2c) — all via harness-improve} ≻ V6 (formal-spec) ≻ V7 (SDL). Nothing in {INV-*, anti-genes, §2c, V6, V7} is selectable until R→S is closed [the R→S audit §8].
 
 ---
 
@@ -111,6 +111,31 @@ Caveats (honest):
 ### 2.3 — Mission frame
 
 INV-A is the *self-application* of `G0` (system-over-nodes; defined genome/design-principles.md) to `N`'s own outputs: it makes the harness reason at the ecosystem level by rule, not by reminder. INV-B keeps `G2` (sandbox≠harness; defined genome/design-principles.md) from eroding as modules are added (it is the behavioural mirror of sandbox.md's scope law). INV-C closes a hole in invariants #1/#4: claims that arrive *through* an agent or *from* the owner are still external-state claims and need an anchor (the owner explicitly is held to invariant #1's bar — "user-asserted external-state claims are held to the same bar", `invariants.txt:#1`).
+
+---
+
+## 2c — constants → functions  [the owner's «счёт is a frozen gene»; land via harness-improve; selectable only after R→S, like INV-*]
+
+A hardcoded count in a behavioural invariant is a frozen gene — it violates the genome's own CONST→FUNC law (GENOME §A.3; ¬ design-principles G4 — G4 'config-driven' only externalizes a constant to config, ≠ replacing a count with a function of a variable): a fixed (1-state) threshold cannot absorb a variable disturbance (Λ ashby-1956 — R3 boundary: *insufficient* ≠ "every constant is wrong"). Five invariants carry such a count; each becomes a function of the real variable. Candidate-DESIGN only — the rewrite of `invariants.txt` is the downstream organ PR.
+
+```
+gene-by-gene [HYPO; anchors in Λ "decision policy — adaptive thresholds"] :
+  #2 consent / #18 confirm-after-3-mutations → threshold from COST asymmetry, not a count:
+        τ = C_irreversible / (C_irreversible + C_friction)        (Λ elkan-2001)
+        high blast-radius / irreversibility ⇒ τ→0 (confirm early); trivially-reversible ⇒ defer; the count drops out.
+        (this IS the consent-gate ↔ blast-radius seam already half-recorded as the idea-exchange P4 REFINEMENT "blast-radius > author-gate" — now grounded)
+  #7 halt-after-2-no-progress                → accumulate a no-progress score, halt when it crosses an
+        ARL-calibrated threshold (CUSUM, Λ page-1954); a function of observed progress, not a fixed step-count
+  #8 arch-reasoning ≤2× estimate → halt      → same CUSUM shape on an elapsed/cost signal; "2×" = the seed of a
+        calibrated bound, not a magic constant
+  #26 delegate-after-3-tool-calls            → trigger on work-INDEPENDENCE × hold-the-model-need × blast-radius,
+        not a call-count (the function the leak-contrast pointed at; the count is a frozen gene)
+  #27 2–3 variants                           → variants only at a genuine owner-decision fork (AskMe-worthy);
+        elsewhere act + one recommendation — "2–3" is a frozen count over a context-binary decision
+chatter guard (all): where one threshold would oscillate at the boundary, use a dual-threshold dead band
+        (hysteresis, Λ schmitt-1938) — e.g. consent-request storms near the margin
+```
+Mission frame: the self-application of CONST→FUNC (§A.3) to N's own gates — the genome obeying its own law (the same move as INV-A applying G0 to N). Honest order: like INV-*, these are draftable/landable-by-gate but their VALUE is unmeasured until R→S closes (§2.2). `HYPO`: no function-form is in `invariants.txt` yet — this is the design, not the landing.
 
 ---
 
