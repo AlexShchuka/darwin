@@ -68,30 +68,16 @@ WSL2-canary   docker-in-WSL2 E2E canary + failure notification   [PARKED]
            genome; this entry covers L1 only. Discard this parked entry once canary job is landed.
 ```
 
-## §M-iter · sandbox token-opt iteration — findings (mirabilis PR#134) [FACT unless tagged]
+## §M-iter · sandbox token-opt iteration — OPEN residue (post-PR#134) [FACT unless tagged]
 
-Source [FACT]: mirabilis PR#134 `feat/token-opt-and-ux` (23 commits; CI 9/9 green 2026-06-14; awaiting owner live-test + merge). Lands graph-plan-sandbox W1–W7 + two findings OUTSIDE the W-plan (onboarding, dependabot-depth). Each fix verified green locally (build/vet · go test · golangci-lint · go-arch-lint · cov 87.8%) and by CI; the load-bearing ones double-gated by @critic. Discard the §landed rows once PR#134 merges and is stable; §debt persists.
-
-§landed [DONE, PR#134] — surfaced DURING implementation, not visible in the plan-state:
-```
-sanitizer-dead+wrong  INV-E was BOTH wrong-regex AND dead code. regex `<\|...\|>` required a leading `|` ⇒ missed the real artifact `<turn|>` (live-verified: offload → "PONG<turn|><turn|><turn|>"); and the fn had ZERO callers — internal/ is unimportable by N, mcp.go returned Complete verbatim ⇒ it could never run. fix: regex → `<\|?[^<>|]*\|>` + wire into mcp.go offload success path (Complete stays verbatim). INV-E now has a real home + caller.
-telegram-perm-fake    INV-F retry classed everything transient — postForm never read resp.StatusCode; ErrPermanent reachable ONLY from a test fake ⇒ a real 4xx (bad token/chat) retried 3× then lingered degraded. fix: wrap 4xx ErrPermanent (A4: permanent=4xx, transient=net/5xx) + real httptest-401 test.
-evline-dropped        W2 progress emitted in Event.Payload not .Line (consumer reads .Line) ⇒ "saving token…"/"detecting channel…" never rendered. fix: emit via .Line + test.
-discover-unbounded    W1 /v1/models discovery had no timeout (main.go &http.Client{} + context.Background()) ⇒ could hang MCP startup. fix: client.Timeout + ctx.WithTimeout from config.
-onboarding-regress    [NEW · ¬W-plan] M never seeded ~/.claude.json ⇒ a from-scratch sandbox shows onboarding + theme-picker + trust-folder dialogs, AND CC ignores ~/.claude/settings.json (incl. hooks) until hasCompletedOnboarding=true. fix: idempotent provision-create onboardingStep seeds hasCompletedOnboarding + projects[/workspace].hasTrustDialogAccepted, merge-preserving.
-copy-honesty/osc52    W3 copy fired into the void — handleCopyDone a no-op (no feedback); xclip/xsel defaulted to PRIMARY so Ctrl+V (CLIPBOARD) couldn't paste the code ⇒ "copied" over-claimed; OSC52 silently dropped by VS Code Remote SSH (anthropics/claude-code#42712). fix: OSC52+shell-out shotgun, `-selection clipboard`/`--clipboard`, clip.exe (WSL), honest non-overclaiming feedback; code always on-screen (G6).
-```
-
-§debt [OPEN] — persists past PR#134:
+Source [FACT]: mirabilis PR#134 `feat/token-opt-and-ux` (CI 9/9 green 2026-06-14). W1–W7 landed code-first and are EXPRESSED in registry-M / graph-plan-sandbox (genes, not vectors — §G implemented→discard); the "3-anchors" lesson is a mined-invariants candidate. Only the OPEN residue lives here (discard each when closed):
 ```
 dependabot-blindspot  dependabot tracks only FROM digests + go.mod + action SHAs; CANNOT track go-install@v / curl / apt / npm pins. closed for the 4 light Go tools (→ go.mod tool directives, gomod-tracked); golangci-lint → official install.sh (maintainers discourage go-install: golangci-lint.run/docs); go-arch-lint stays a Dockerfile pin (go.mod tool ⇒ ambiguous-import conflict, build-verified `go get -tool`+`go mod tidy`: cdr.dev/slog(test)→cloud.google.com/go/compute/metadata present in two modules, cloud.google.com/go v0.26.0 vs .../compute/metadata v0.3.0). REMAINING manual-bump (no auto-update path): golangci-lint · gitleaks · go-arch-lint · RTK · uv · go · gh · docker-ce-cli · claude-code · bats. [Q: a non-dependabot release-watch workflow worth its cost? = an R→S question]
 pty/signal env-tests  TestTTYChildInheritsForegroundPgroup + TestSIGHUPExitsAndReleasesFlock FAIL in a no-controlling-terminal container (this sandbox), PASS on main + CI ⇒ env-sensitivity, ¬regression; a suite-portability finding, not a fix-now bug.
 sanitize-overstrip    [HYPO, low-prob] the broadened regex could strip a literal `<word|>` in genuine model output; bounded by the required `|>` close; no evidence the model emits it.
 ```
 
-§lesson [→ propose for BODY, ¬Vec]: "3 anchors of reality" — the dependabot + sanitizer decisions were shipped from reasoning + a stale plan's citations with the web/industry anchor SKIPPED; owner corrected ("не забывай гуглить… 3 якоря"). The live anchor (a real offload call) then caught the dead/wrong sanitizer that code+docs review had missed. Converges with INV-C (anchor borrowed claims) and GENOME §J read-before-act. Candidate invariant — proposed into mined-invariants, not held here as transient.
-
-§ledger (this entry): FACT — PR#134 + CI 9/9 + the named fixes/anchors (file:line in the PR diff); live offload confirmed the `<turn|>` artifact; the go-arch-lint go.mod-tool conflict build-verified locally (`go mod tidy` ambiguous-import). ASSOC — the Vec placement; the lesson↔INV-C convergence. HYPO — regex over-strip; that the manual-bump debt earns a watch-workflow. transient — discard §landed on merge+stable; §debt persists; §lesson migrates to BODY on owner accept.
+§ledger: FACT — the open items above (the dependabot list mirrors mirabilis AGENTS.md; the go-arch-lint conflict build-verified locally via `go get -tool`+`go mod tidy` ambiguous-import). ASSOC — Vec placement. HYPO — regex over-strip; whether the manual-bump debt earns a watch-workflow. transient — discard each item when closed; discarding does not rebuild CORE. The landed W1–W7 work is expressed as genes (registry-M / graph-plan-sandbox), not here; the 3-anchors lesson is a mined-invariants candidate.
 
 ## §I — Ledger (this entry)
 ```

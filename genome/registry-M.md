@@ -36,28 +36,31 @@ G-loc  = G-localllm
 channel-disjoint(tool-out, API-window, agent-out, ∅) ⇒ ¬duplication   [FACT]
 ```
 
-## Work-item mutations (plan = Δ on these genes, ¬new organs)
+## Work-item mutations (Δ on these genes, ¬new organs)
 ```
-W1 localllm config+discovery+Sanitize → G-localllm,G-config   [INV-D,INV-E]
-W2 telegram detect+feedback+retry      → G-notify,G-steps,G-secrets   [INV-F]
-W3 ghauth host browser+copy            → G-sandbox,G-steps,G-tui,G-bus
-W4 attach remove standalone            → G-steps,G-tui
-W5 vscode open "/"                      → G-sandbox
-W6 lint+arch-lint into image           → .devcontainer/Dockerfile
-W7 bounded proxy wait + ctx sleep      → G-hooksM,G-provision
-W8 SearXNG websearch (new gene)        → G-websearch,G-config,compose
-W9 cross-cluster back-nav (rewindable FSM / front-load)  → G-pipeline,G-steps,G-tui   [eng-choice/HYPO; deferred mirabilis#132-L1]
-W10 adaptive overlay form sizing on push  → G-tui,G-bus   [eng-choice/HYPO; deferred mirabilis#132-L2]
+W1–W7 LANDED — mirabilis PR#134 (expressed in the genes; the plan-Δ is applied):
+  W1 localllm config + /v1/models discovery + Sanitize (wired into offload MCP)  → G-localllm,G-config   [INV-D,INV-E]
+  W2 telegram detect-broaden + progress + 4xx-permanent capped-retry             → G-notify,G-steps,G-secrets   [INV-F]
+  W3 ghauth host browser-open + device-code copy (OSC52 + shell-out)             → G-sandbox,G-steps,G-tui,G-bus
+  W4 attach standalone removed                                                   → G-steps,G-tui
+  W5 vscode open "/"                                                             → G-sandbox
+  W6 full toolchain into image + dependabot integrity (4 light tools→go.mod tool directives; golangci-lint→install.sh)  → .devcontainer/Dockerfile,G-config
+  W7 bounded proxy wait + ctx-aware sleep                                        → G-hooksM,G-provision
+  off-plan (same PR): onboarding/trust/theme suppression (~/.claude.json seed)   → G-provision ; copy-feedback honesty → G-tui
+OPEN plan:
+  W8 SearXNG websearch (new gene)        → G-websearch,G-config,compose
+  W9 cross-cluster back-nav (rewindable FSM / front-load)  → G-pipeline,G-steps,G-tui   [eng-choice/HYPO; deferred mirabilis#132-L1]
+  W10 adaptive overlay form sizing on push  → G-tui,G-bus   [eng-choice/HYPO; deferred mirabilis#132-L2]
 ```
 
-## M invariant-genes (plan node 50; HYPO until landed; home = lint/contract-test/CI)
+## M invariant-genes (LANDED mirabilis PR#134 — homes green)
 ```
-INV-D  config/discover ¬hardcode   lands W1   [#30: overrides intentional-hardcode mirabilis/CLAUDE.md:23-26 → owner-gated; real lever = model-id discovery, F4]
-INV-E  sanitize external-model out  lands W1
-INV-F  bound IO ¬human-wait         lands W2
+INV-D  config/discover ¬hardcode   home: localllm env-overridable config + /v1/models discovery + completer/config tests   [owner approved the design-reversal via the W1–W7 iteration; CONFLICT-2 resolved]
+INV-E  sanitize external-model out  home: SanitizeOutput + table test + mcp_test (offload tool sanitizes at the boundary)
+INV-F  bound IO ¬human-wait         home: notify 4xx-permanent + capped-retry tests; Configure bounded (¬the human-input wait)
 ```
 
 ## Ledger
 FACT: all packages exist (listing) + package-doc read for authproxy/harness/membackup/obs/localllm. caveman ∈ M (config/skills.txt:2 + test/token_opt.bats:31) — earlier "grep ∅" was a FALSE FACT (grep excluded .txt); CORRECTED. ASSOC: role of claudeauth/status (name-only).
-CONFLICT-1: `mirabilis-impl-plan.md` W1="auto-offload hook" contradicts `[D5]` (no hook) + fused genes caveman↔localLLM → gene-mutation for selection.
-CONFLICT-2 [#30]: INV-D/W1 "config-driven, ¬hardcode" contradicts a RECORDED decision — mirabilis/CLAUDE.md:23-26 "This edge is intentional and hardcoded to http://host.docker.internal:1234/v1"; config.go:20-23 are compile-time const ⇒ W1 = design-reversal, owner-approval-gated; reopening needs new evidence (model-id "local-model" ≠ loaded-model, plan F4). Do not patch code under this conflict — it is owner-gated.
+CONFLICT-1 RESOLVED (PR#134): W1 landed integration-only — NO auto-offload hook (D5/D6 honored); caveman↔localLLM stay distinct alleles (§H quartet, channel-disjoint).
+CONFLICT-2 RESOLVED (PR#134) [#30]: the owner approved the W1–W7 iteration ⇒ the config-driven design-reversal is accepted; the localllm constants are now env-overridable with the prior hardcoded values as defaults, and SanitizeOutput crosses the model-output trust boundary. FOLLOW-UP (mirabilis doc, ¬genome): AGENTS.md:23-26 "intentional and hardcoded" wording is now stale (config-driven default) — fix in a mirabilis doc pass.
