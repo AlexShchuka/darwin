@@ -246,7 +246,7 @@ Mission frame: owner navigability across the full launch flow = lower owner fric
 ## 11 — W10 · adaptive overlay form sizing  [eng-choice; deferred from #131]
 
 ```
-W10 : G-tui, G-bus, G-router        registry-M (work-item list)
+W10 : G-tui, G-bus        registry-M (work-item list)
 κ   : /workspace/mirabilis/internal/tui/router/router.go    [home]
       /workspace/mirabilis/internal/tui/app/screens.go       [home]
       /workspace/mirabilis/docs/tui-principles.md (P1)       [home]

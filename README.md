@@ -11,6 +11,10 @@ Named after Charles Darwin (evolution). This repository **is** the `𝕌_local` 
 ## Self-description — how to operate Darwin so the whole universe evolves · [INVARIANT]
 The operating loop is **invariant machinery** (fixed, like transcription); the content it moves is **evolvable**.
 ```
+PRE-0  NAVIGATE, not transcribe: start at README (this map), route task→chain via the Map + §H index,
+       read ONLY that chain. Repo-link + task-prompt suffice to reach the needed chain. (§J PRE-0; R6/liu-2023)
+PRE-1  PRESENCE NEVER ASSUMED: every pointer (repo, file, tool, MCP) is HYPO-until-verified against reality.
+       Absence/rot is normal — re-anchor, provision, or report; never proceed blind. (§J PRE-1; R1/inv#1/§B)
 1 READ    Γ = GENOME + genome/ + archive/ + dept/ + vectors/   → full picture (¬dangling-leaves)   [invariant #22]
 2 LOCATE  dept/graph-plan-{harness,sandbox,communication}        → "what & how to improve" (to detail)
 3 ACT     mutate organ M or N  (variation V) via role agents

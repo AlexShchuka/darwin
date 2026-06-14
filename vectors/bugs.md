@@ -48,7 +48,7 @@ eval-power   N too small                              [OPEN]
 
 ```
 WSL2-canary   docker-in-WSL2 E2E canary + failure notification   [PARKED]
-     source   : mirabilis#121 L1 (ex-P6)
+     source   : mirabilis#121 L1
      trigger  : date ≥ 2026-06-16 (VS2026 runner-image migration settles)
      current state [FACT, mirabilis#121-L1, verified vs main 4c982a7 on 2026-06-11]:
        - canary.yml on main has no windows job and no `if: failure()` notification step

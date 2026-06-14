@@ -26,6 +26,11 @@ R5  emergence            a whole is DIFFERENT from (not merely "more than") the 
 R6  compression≈understanding   the shortest FAITHFUL description is the best model; compression and prediction are one. ⇒ density, truth and accuracy are ONE description of one thing — without them the system is wrong.
                          boundary: exact compression is INCOMPUTABLE (Kolmogorov/Solomonoff incomputability — no computable universal prior exists; approximations only); faithful ≠ merely-short (truncation loses meaning). Separate result: no-free-lunch (Wolpert & Macready 1997) — no single optimization algorithm outperforms all others averaged over all problems; this is a distinct result from incomputability, not a corollary of R6.
                          Λ: kolmogorov-1965 · solomonoff-1964 · rissanen-1978 · li-vitanyi · wolpert-macready-1997
+R7  pace layering          in a nested system, layers change at different rates: inner/core slowest, periphery progressively faster; a slow layer is SHIELDED from a fast layer's churn — forced fast→slow change is a pathology, not the norm.
+                         ecosystem hierarchy (slow→fast): genome Γ ≺ organs {M,N} ≺ clothes ≺ environment ℛ.
+                         "clothes" = the replaceable outer layer the organs wear: config + tool/model choice + the compression quartet (RTK/headroom/caveman/localLLM) + installed skills/plugins. [ASSOC/HYPO — owner to confirm the layer's exact contents]
+                         boundary: a DESIGN HEURISTIC / architectural pattern backed by cross-domain empirical regularity, NOT a natural law; "rate" = substitution/divergence rate (not recombination rate); does not predict where layer boundaries fall; does NOT forbid intentional slow-layer redesign — it forbids only fast-churn FORCING slow-layer change without independent justification.
+                         Λ: brand-1994 · brand-1999 · martin-2017 · zhang-li-2004
 ```
 The owner's truth-criterion is R1+R2+R3 itself: no self-proof (R1) ⇒ three independent witnesses (owner · AI · reality); growth by refutation (R2); converge-or-halt on disagreement (R3). The one irreducible commitment is to reason-and-correction itself — *defended, not proved* (Λ: popper-1945), held open to revision. So even the floor is not fiat.
 
@@ -48,6 +53,9 @@ Evolution here is directed (in the cultural-evolution sense sometimes called Lam
 
 ### §A.3 — Constants → functions [grounded R4]
 A hand-frozen value is a frozen gene that blocks adaptation at that point (R4). So a parameter (¬machinery, ¬safety) is left evolvable, rising by a monotone ratchet (never regresses) [HYPO: engineering choice, not a grounded law], under the safety constraint. EXEMPT (stay fixed): the error-correction machinery (§J, R3) and safety — the conserved apparatus; even these stay open to revision in principle (R2), but are not casually mutated. The no-auto-merge-to-main rule is grounded in: Λ: saltzer-1975 (least privilege — a process runs with only the permissions necessary) and Λ: barr-2015 (oracle problem — automated testing alone cannot certify correctness; a human oracle is required before irreversible state changes).
+
+### §A.4 — Differential mutation rates [a consequence of R7]
+R7 applied to Γ: CORE is the slowest layer of this genome; Vec is the fastest; §A.3's EXEMPT conserved machinery (§J loop) is the innermost stable core. §G names the strata. Forbidden in CORE and README by this: no "this session" / session-refs, no issue-number-as-identity (#NN), no local code-churn / LoC / file:line — those belong in Vec or SCRATCH. genome ≠ archive (raw run-status, per-session logs, code-churn rot; Γ stores the compressed state + open work only).
 
 ### §A.5 — Formalism honesty [grounded R1, Λ: leiden-2026]
 Notation is used ONLY for a real formal object (a defined structure, a machine-checkable predicate, an actual proof). Logic symbols over undefined terms confer false authority and hide error — the documented failure (Λ: leiden-2026; Λ: franzen-2005 on Gödel-abuse, R1 boundary). Metaphor/hypothesis → honest prose + ASSOC/HYPO, never theorem-shaped. Claim only the rigor held. Applying a theorem outside its domain (e.g. R1 literally onto a non-formal system) is itself this error.
@@ -89,7 +97,7 @@ DEPT    dept/ — preserved, decoupled : audits + graph-plans. a DEPT change doe
 Vec     vectors/ — transient working-set : open fixes/debt; implemented → discard.
 SCRATCH outside Γ : session-dumps, drafts, critic-findings — short-lived, exported as entropy.
 ```
-Law [R6]: Γ stores the COMPRESSED state + open work, never raw run-status / per-session logs / code-churn (those rot). Λ = scientific sources only (ref + claim + lastVerified), deduped.
+Strata order = R7 applied to Γ (see §A.4). Law [R6]: Γ stores the COMPRESSED state + open work, never raw run-status / per-session logs / code-churn (those rot). Λ = scientific sources only (ref + claim + lastVerified), deduped.
 
 ## §H — Registry
 - BODY: `genome/registry-{M,N,new}.md` · `projections.md` · `mined-invariants.md` · `design-principles.md` (G0–G12) · `archive/archive.md` (Λ).
@@ -113,6 +121,22 @@ correction-log (this iteration) :
 
 ## §J — Operating loop [grounded R3 — the error-correction cycle]
 ```
+PRE-0  NAVIGATE, not transcribe: given repo-link + task-prompt, start at README (the map), route task→chain
+       (stratum → file → work-item/gene) via the Map + §H index, and read ONLY that chain.
+       [ASSOC: like protein synthesis transcribing one gene (not all DNA) — biology lens]
+       The whole genome need not be read to act on one task; repo-link + task-prompt suffice to reach the
+       needed chain. Grounding: R6 (reader attention is the binding constraint; Λ: liu-2023) + navigation
+       via index/links, descend only when needed (Λ: karpathy-llm-wiki [ASSOC — blog/community source,
+       not peer-reviewed]).
+PRE-1  PRESENCE IS NEVER ASSUMED — it is verified against reality. Any artifact this genome points to (an
+       organ repo, a file, a line, a tool, an MCP) MAY be absent or moved. Treat every such pointer as
+       HYPO-until-checked: verify it against reality at use-time; absence or rot is a NORMAL state to handle
+       (re-anchor / provision / report) — never proceed on blind assumption. The fastest-rotting pointers
+       live in Vec (the transient tier); continuous pruning ('cleaning the room'); the source of truth is
+       always re-read from reality. Grounding: R1 (reality is the arbiter — the system verifies, it does not
+       assume) + invariant #1 (claim↔tool-output) + §B (home MAY ROT).
+       NOTE: bootstrapping/provisioning a fresh sandbox is NOT this genome's job (that is sandbox M +
+       Claude) — this principle is about how to OPERATE the genome correctly, not a provisioning guide.
 loop : READ(Γ) → LOCATE(dept/graph-plans) → ACT(M|N) → SELECT(three witnesses: owner+AI+reality; eval+tests) → CORRECT → WRITE → SHARE
 WRITE : compress the session into a delta over {𝒢, Inv, Λ, Vec, DEPT}; raw → SCRATCH (R6; genome ≠ archive)
 ```

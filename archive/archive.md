@@ -60,12 +60,22 @@ One row per source. Dedup law (§G): `∀ λ1,λ2 : ref(λ1)=ref(λ2) → λ1=λ
 | li-vitanyi | Li, M. & Vitányi, P. (2008). *An Introduction to Kolmogorov Complexity and Its Applications* (3rd ed.). New York: Springer. ISBN 9780387339986 | Standard reference for Kolmogorov complexity, universal distributions, and applications in learning and inference | algorithmic information theory | canonical |
 | wolpert-macready-1997 | Wolpert, D.H. & Macready, W.G. (1997). "No Free Lunch Theorems for Optimization." *IEEE Transactions on Evolutionary Computation* 1(1):67–82. DOI: 10.1109/4235.585893 | No single optimization algorithm outperforms all others averaged uniformly over all problem distributions; any gain on one class is offset by loss on another | optimization / evolutionary computation | 2026-06-14 |
 
+## §0 R7 — pace layering / differential mutation rates
+
+| id | ref | minimal-claim | domain | lastVerified |
+|----|-----|--------------|--------|--------------|
+| brand-1994 | Brand, S. (1994). *How Buildings Learn: What Happens After They're Built*. New York: Viking. ISBN 9780670835485 | Buildings have shearing layers (site/structure/skin/services/space-plan/stuff) each changing at different timescales; faster layers must not be allowed to damage slower ones | architecture / systems design | canonical |
+| brand-1999 | Brand, S. (1999). *The Clock of the Long Now: Time and Responsibility*. New York: Basic Books. ISBN 9780465007805; also: Brand, S. (2018). "Pace Layering: How Complex Systems Learn and Keep Learning." *Journal of Design and Science* (MIT). DOI: 10.21428/7f2e5f08 | Pace layering: civilization has nested layers (fashion/commerce/infrastructure/governance/culture/nature) each at different speeds; slower layers are more powerful and provide stability; faster layers provide innovation | systems theory / cultural evolution | 2026-06-14 |
+| martin-2017 | Martin, R.C. (2017). *Clean Architecture: A Craftsman's Guide to Software Structure and Design*. Hoboken NJ: Prentice Hall. ISBN 9780134494166 | Stable Dependencies Principle: depend in the direction of stability; Stable Abstractions Principle: stable components should be abstract; inner architectural layers must not depend on outer/volatile ones | software engineering | canonical |
+| zhang-li-2004 | Zhang, L. & Li, W.-H. (2004). "Mammalian Housekeeping Genes Evolve More Slowly than Tissue-Specific Genes." *Molecular Biology and Evolution* 21(2):236–239. DOI: 10.1093/molbev/msh010 | Housekeeping genes (ubiquitously expressed) evolve significantly more slowly than tissue-specific genes; evolutionary rate is lower for core functional / conserved genes than for peripheral/specialised ones | molecular evolution / genomics | 2026-06-14 |
+
 ---
 
 ## design/AI — LLM behaviour and multi-agent engineering
 
 | id | ref | minimal-claim | domain | lastVerified |
 |----|-----|--------------|--------|--------------|
+| karpathy-llm-wiki | Karpathy, A. (2025). "LLM-Wiki / knowledge compiled once, kept current" — blog post / community source; not peer-reviewed. `karpathy.ai` / X @karpathy. ctype: `industry` | Navigate large knowledge bases via index/links; descend into full content only when needed; compiled knowledge amortises reading cost | AI / knowledge management | 2026-06-14 |
 | liu-2023 | Liu, N.F. et al. (2023). "Lost in the Middle: How Language Models Use Long Contexts." arXiv:2307.03172 | LLM performance on retrieval degrades for content in the middle of long contexts; attention is not uniform — reader attention is the binding constraint | NLP / LLM behaviour | 2026-06-14 |
 | shi-2023 | Shi, F. et al. (2023). "Large Language Models Can Be Easily Distracted by Irrelevant Context." arXiv:2302.00093 | Adding irrelevant information to prompts dramatically decreases LLM reasoning accuracy; density of relevant content matters | NLP / LLM behaviour | 2026-06-14 |
 | huang-2023 | Huang, J. et al. (2023). "Large Language Models Cannot Self-Correct Reasoning Yet." arXiv:2310.01798 | LLMs cannot reliably correct their own reasoning without external feedback; intrinsic self-correction degrades performance at times | NLP / LLM behaviour | 2026-06-14 |
