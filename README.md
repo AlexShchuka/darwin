@@ -55,7 +55,6 @@ dept/graph-plan-harness.md       what & how to improve N (vector: close R→S fi
 dept/graph-plan-sandbox.md       what & how to improve M (work-items W1–W8, by gene)
 dept/graph-plan-communication.md communication systems (AskMe/codebook/protocol/Telegram/translator/caveman)
 vectors/vectors.md         Vec index + lifecycle
-vectors/bugs.md            open fixes (the eval-gate fixes, gate-fixed; N7 ROADMAP-vs-code conflict; eval power)
-vectors/fix-graph.md       /workspace/plan condensed (superseded sandbox plan, W1–W8)
+vectors/bugs.md            open fixes (N eval-gate + M token-opt §M-iter open residue)
 vectors/idea-exchange.md   the cross-AI advisory exemplar migrated (public-Γ; patterns → compress into Λ)
 ```

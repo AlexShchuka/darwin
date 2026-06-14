@@ -68,6 +68,17 @@ WSL2-canary   docker-in-WSL2 E2E canary + failure notification   [PARKED]
            genome; this entry covers L1 only. Discard this parked entry once canary job is landed.
 ```
 
+## §M-iter · sandbox token-opt iteration — OPEN residue (post-PR#134) [FACT unless tagged]
+
+Source [FACT]: mirabilis PR#134 `feat/token-opt-and-ux` (CI 9/9 green 2026-06-14). W1–W7 landed code-first and are EXPRESSED in registry-M / graph-plan-sandbox (genes, not vectors — §G implemented→discard); the "3-anchors" lesson is a mined-invariants candidate. Only the OPEN residue lives here (discard each when closed):
+```
+dependabot-blindspot  dependabot tracks only FROM digests + go.mod + action SHAs; CANNOT track go-install@v / curl / apt / npm pins. closed for the 4 light Go tools (→ go.mod tool directives, gomod-tracked); golangci-lint → official install.sh (maintainers discourage go-install: golangci-lint.run/docs); go-arch-lint stays a Dockerfile pin (go.mod tool ⇒ ambiguous-import conflict, build-verified `go get -tool`+`go mod tidy`: cdr.dev/slog(test)→cloud.google.com/go/compute/metadata present in two modules, cloud.google.com/go v0.26.0 vs .../compute/metadata v0.3.0). REMAINING manual-bump (no auto-update path): golangci-lint · gitleaks · go-arch-lint · RTK · uv · go · gh · docker-ce-cli · claude-code · bats. [Q: a non-dependabot release-watch workflow worth its cost? = an R→S question]
+pty/signal env-tests  TestTTYChildInheritsForegroundPgroup + TestSIGHUPExitsAndReleasesFlock FAIL in a no-controlling-terminal container (this sandbox), PASS on main + CI ⇒ env-sensitivity, ¬regression; a suite-portability finding, not a fix-now bug.
+sanitize-overstrip    [HYPO, low-prob] the broadened regex could strip a literal `<word|>` in genuine model output; bounded by the required `|>` close; no evidence the model emits it.
+```
+
+§ledger: FACT — the open items above (the dependabot list mirrors mirabilis AGENTS.md; the go-arch-lint conflict build-verified locally via `go get -tool`+`go mod tidy` ambiguous-import). ASSOC — Vec placement. HYPO — regex over-strip; whether the manual-bump debt earns a watch-workflow. transient — discard each item when closed; discarding does not rebuild CORE. The landed W1–W7 work is expressed as genes (registry-M / graph-plan-sandbox), not here; the 3-anchors lesson is a mined-invariants candidate.
+
 ## §I — Ledger (this entry)
 ```
 FACT  : the eval-gate fixes exist as the R→S audit comments with the statuses above; each fix verified vs the named non-LLM ground truth + golden-tested to fail on the old behaviour; eval-power N=17 stated in the vanilla-baseline-arm comment.

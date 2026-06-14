@@ -102,7 +102,7 @@ Strata order = R7 applied to Γ (see §A.4). Law [R6]: Γ stores the COMPRESSED 
 ## §H — Registry
 - BODY: `genome/registry-{M,N,new}.md` · `projections.md` · `mined-invariants.md` · `design-principles.md` (G0–G12) · `archive/archive.md` (Λ).
 - DEPT: `dept/theory-of-everything.md` · `dept/graph-plan-{harness,sandbox,communication}.md`.
-- Vec: `vectors/{vectors,bugs,fix-graph,idea-exchange}.md`.
+- Vec: `vectors/{vectors,bugs,idea-exchange}.md`.
 
 ## §I — Ledger
 ```

@@ -4,7 +4,7 @@ These principles govern engineering decisions in M (sandbox) and, where noted, N
 They are **engineering choices** [eng-choice], not grounded scientific laws — each is tagged accordingly.
 Where a §0 root applies it is noted; otherwise the tag is [eng-choice/HYPO].
 
-Source of these definitions: distilled from `/workspace/plan/00-system.md` (superseded) + usage patterns in `dept/graph-plan-sandbox.md` and `vectors/fix-graph.md`.
+Source of these definitions: distilled from `/workspace/plan/00-system.md` (superseded) + usage patterns in `dept/graph-plan-sandbox.md`.
 The superseded plan is the origin; Darwin (Γ) is the canonical home from this point.
 
 ```
@@ -72,20 +72,22 @@ G12 panic-degrade       a panic in a subsystem is caught, logged, and the subsys
 
 | principle | using files | root / Λ |
 |-----------|-------------|----------|
-| G0 | dept/graph-plan-harness.md:113; dept/graph-plan-sandbox.md:249 | R5 |
-| G1 | dept/graph-plan-sandbox.md:38,150,216; vectors/fix-graph.md:14 | [eng-choice] |
-| G2 | dept/graph-plan-harness.md:87,96,113,179; dept/graph-plan-sandbox.md:5,77,128; dept/graph-plan-communication.md:57 | §A ontology |
-| G3 | dept/graph-plan-sandbox.md:72,125 | [eng-choice] |
-| G4 | dept/graph-plan-sandbox.md:40,61,64,70,127; vectors/fix-graph.md:17,30; genome/registry-M.md:13 | R4 |
+| G0 | dept/graph-plan-harness.md:113; dept/graph-plan-sandbox.md | R5 |
+| G1 | dept/graph-plan-sandbox.md | [eng-choice] |
+| G2 | dept/graph-plan-harness.md:87,96,113,179; dept/graph-plan-sandbox.md; dept/graph-plan-communication.md:57 | §A ontology |
+| G3 | dept/graph-plan-sandbox.md | [eng-choice] |
+| G4 | dept/graph-plan-sandbox.md; genome/registry-M.md:13 | R4 |
 | G5 | genome/registry-M.md:12; genome/registry-new.md:20 | R3 |
-| G6 | dept/graph-plan-sandbox.md:71,98,101,149,152; vectors/fix-graph.md:13 | R3 |
-| G8 | dept/graph-plan-sandbox.md:61,70,125 | [eng-choice] |
-| G12 | dept/graph-plan-sandbox.md:98 | R3 via G6 |
+| G6 | dept/graph-plan-sandbox.md | R3 |
+| G8 | dept/graph-plan-sandbox.md | [eng-choice] |
+| G12 | dept/graph-plan-sandbox.md | R3 via G6 |
+
+Line-homes into `dept/graph-plan-sandbox.md` were rotted by the W1–W7 prune (§B: home MAY ROT, validity from grounding) — navigate by file/section, not by line.
 
 ## Ledger
 ```
 FACT   : G0/G2/G4/G5/G6/G12 grounded in §0 roots or Λ (noted above); G9 grounded Λ:saltzer-1975.
 HYPO   : G1/G3/G8/G10/G11 are conventions without scientific grounding — engineering choices that have survived use.
 Q      : G7/G9/G10/G11 not observed in current file set (defined here for completeness of the G0–G12 block).
-source : distilled from /workspace/plan (superseded Vec entry fix-graph.md §50 + plan/00-system.md); Darwin Γ is the canonical home.
+source : distilled from /workspace/plan (superseded; plan/00-system.md §50); Darwin Γ is the canonical home.
 ```
