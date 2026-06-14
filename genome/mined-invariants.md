@@ -1,0 +1,39 @@
+# Mined invariants — candidates from the memory dump (Λ-input + candidate Inv)
+
+Source: agent `mem-miner` over `/workspace/claude-memory-backup.tar.gz` — 18 findings, 0 science-contradictions. Status: still **candidate for selection** (R→S not yet run — promotion into `𝒢`/`Inv` is the owner-select step, separate from anchor-truth). Read-back: **COMPLETE (critic-verified against /tmp/membak)** for CI-1/2/3/4/5/7/9/10/11/13 → their FACT tags STAND (anchors confirmed accurate). Exceptions, see those rows: CI-6/CI-14 anchors off-by-one-corrected (:7, :10); CI-12 SPLIT (lexical=FACT / long-term-graph=HYPO); negentropy DOWNGRADED to owner-disclaimed-metaphor lens (¬corroborated); Kaner attribution corrected. INV-C still holds for any future borrowed claim.
+
+## Negentropy principle (why Γ accumulates)  · [ASSOC]
+Read as an analogy, not a derivation: Γ behaves like a dissipative structure — it accumulates information by exporting entropy outward, an island of order/reality. [ASSOC: Schrödinger negentropy · Prigogine dissipative structures (Nobel 1977) · England — order self-assembly serves the 2nd law]
+- status: OWNER-DISCLAIMED METAPHOR / lens, ¬corroborated — the dump itself marks negentropy as a wrapper-metaphor, not a fact (anchor /tmp/membak/memory/daniil-convergence.md:20 "помечено им самим как метафора-обёртка, не факт"; /tmp/membak/daniil/associations-metaphors.md:13 "(он сам пометил — обёртка, не факт)").
+- consequence [ASSOC]: the evolution of Σ is continuous and iterative — driven by owner, science, and reality together — so the R→S loop runs indefinitely. What accumulates is the union of neuro-matrix invariants, mathematical ideas, code-creation principles, and sandbox implementation.
+
+## Candidate invariants  (id · target · statement · type · mem-anchor[reported])
+```
+CI-1  Γ/mem    memory-quality = compression-to-essence/invariants, ¬size-only            FACT  daniil/invariants.md:23 (I10)
+CI-2  N/Γ      reliability = reproducibility ⊕ accuracy (two invariants, treated apart)   FACT  daniil/invariants.md:22 (I9)
+CI-3  N/Γ      a rule survives only if extracted to a deterministic gate OUTSIDE the model FACT  daniil/pains-signals.md:13 (S3)   [≡ the R→S audit's mechanical-home]
+CI-4  N/Γ      cost = parameter, ¬invariant (premature cost-opt risks reliability/accuracy) FACT daniil/invariants.md (I8)
+CI-5  N/Γ      conflicting invariants → escalate to human arbiter (no deterministic resolver yet) FACT daniil/gaps-contradictions.md:4 (C1)
+CI-6  Γ/N      system boundary is goal-dependent, never neutral (borderless paralyzes)     FACT  daniil/comms-channel.md:7  [ASSOC Meadows]
+CI-7  Γ/N      owner-invariant architecture: core owner-independent; owner-knowledge=swappable module FACT memory/associative-chains.md:14
+CI-8  M/N      boundary contracts state WHERE each leg executes; mocking a boundary proves nothing FACT memory/dev-principles.md:9
+CI-9  M/N      SRP in infra: sandbox isolates · VPN+killswitch on host owns network · ¬mix FACT  daniil/invariants.md:24 (I11)
+CI-10 comms    AI = translator, never arbiter (data-processing inequality: no new info re intent) ASSOC memory/associative-chains.md:17
+CI-11 comms    false-MATCH (silent misunderstanding) > false-DIVERGE → make agreement expensive ASSOC memory/associative-chains.md:15
+CI-12 comms/mem associative↔fact contamination after LLM dialogue → AI-free passes + draft-own-first  SPLIT  memory/research-log.md:11
+        ├ lexical/short-term contamination = FACT (Yakura'24 + Anderson'25; lab-short-term Jakesch'23, Vicente&Matute'23)
+        └ long-term associative-graph restructuring = HYPO (no studies — research-log.md:11 "долгосрочная перестройка ... — HYPO, исследований нет")
+CI-13 N/eval   eval gate uses noise-robust stats (McNemar p<0.05; Krippendorff α≥0.8), ¬raw counts FACT memory/research-log.md:12  [≡ the R→S audit's eval-gate fixes: the McNemar-tail + rater-aware-α fixes]
+CI-14 comms/sec prompt-injection = SQL-injection for LLM; parameterize by author_login (cmd≠data) FACT daniil/open-questions-to-alex.md:10 [ASSOC OWASP-LLM01]
+```
+
+## Communication-protocol primitives  → `improve/communication.md`  · [FACT reported: daniil/translation-format.md:8-26]
+```
+10 research-grounded primitives: METAPHOR-UNPACK · GROUNDING-CHECK · TRANSLATION-ACCEPT-TEST · DIVERGE-THEN-CONVERGE · …
+  sources [translation-format.md:9-16,:26]: Lakoff (metaphor) · Korzybski/Hayakawa (map≠territory) · Clark (grounding) · Grice (maxims) · Star&Griesemer (boundary objects) · Nida (translation) · Zettelkasten (atomic-capture)
+  Kaner (Double-Diamond) is NOT in translation-format.md's source list (:26) — it sources comms-channel.md:19 primitive-8 "Сходись после расхождения (Double Diamond / Kaner)"   [attribution-corrected]
+atomic-capture : one card = one idea (Zettelkasten) → track dynamics-by-points   FACT daniil/pains-signals.md
+```
+
+## Selection note
+CANDIDATES (¬yet Inv). Promotion path: critic read-back (INV-C) DONE (CI-1/2/3/4/5/7/9/10/11/13 verified vs /tmp/membak; CI-6/14 anchor-corrected; CI-12 split; negentropy→owner-metaphor) → next is owner-select (R→S) → into `registry-N` candidates (alongside INV-A/B/C), `registry-M` (CI-8/9 — CI-8 anchor not yet re-read), or `improve/communication` (CI-10/11/14 + primitives). Convergences with existing genome: CI-3 ≡ mechanical-home · CI-13 ≡ the eval-gate fixes (McNemar-tail + rater-aware-α) · negentropy ≡ the cross-AI advisory exemplar. Contradictions found: 0 (mem-miner-reported; critic read-back confirmed no anchor falsified the 10 verified rows).
