@@ -30,7 +30,7 @@ R7  pace layering          in a nested system, layers change at different rates:
                          ecosystem hierarchy (slow→fast): genome Γ ≺ organs {M,N} ≺ clothes ≺ environment ℛ.
                          "clothes" = the replaceable outer layer the organs wear: config + tool/model choice + the compression quartet (RTK/headroom/caveman/localLLM) + installed skills/plugins. [ASSOC/HYPO — owner to confirm the layer's exact contents]
                          boundary: a DESIGN HEURISTIC / architectural pattern backed by cross-domain empirical regularity, NOT a natural law; "rate" = substitution/divergence rate (not recombination rate); does not predict where layer boundaries fall; does NOT forbid intentional slow-layer redesign — it forbids only fast-churn FORCING slow-layer change without independent justification.
-                         Λ: brand-1994 · brand-1999 · martin-2017 · zhang-li-2004
+                         Λ: brand-1994 · brand-1999 · brand-2018 · martin-2017 · zhang-li-2004
 ```
 The owner's truth-criterion is R1+R2+R3 itself: no self-proof (R1) ⇒ three independent witnesses (owner · AI · reality); growth by refutation (R2); converge-or-halt on disagreement (R3). The one irreducible commitment is to reason-and-correction itself — *defended, not proved* (Λ: popper-1945), held open to revision. So even the floor is not fiat.
 
@@ -106,17 +106,10 @@ Strata order = R7 applied to Γ (see §A.4). Law [R6]: Γ stores the COMPRESSED 
 
 ## §I — Ledger
 ```
-FACT  : §0 R1–R6 (each survived a refutation attempt + ≥3 sources, boundaries stated, this session); §F seahorse (PNAS, verified); heredity + variation present.
+FACT  : §0 R1–R7 — each survived a refutation attempt + ≥3 independent sources, boundaries stated; §F seahorse (PNAS, asymmetric + irreversible); heredity + variation present.
 ASSOC : §F seahorse↔parts lens; the developmental f(heredity,mutation,env) framing.
-HYPO  : §A.1 leverage of the initial set; §D that the bundle adapts once the measured edge closes; telos scope.
+HYPO  : §A.1 leverage of the initial set; §D that the bundle adapts once the measured edge closes; telos scope; R7 clothes-layer exact contents.
 Q     : the machine-measured selection signal; completeness of Λ's domains (open by R1, never closed).
-correction-log (this iteration) :
-  removed owner-fiat framing — every setting grounds in §0/Λ or is marked HYPO/Q (the owner is a fallible source, invariant #1) ;
-  removed the literal Gödel/Tarski claim → R1 PRINCIPLE with its boundary (Franzén) ;
-  replaced Desc(M)⊆Γ with developmental generativity (code = phenotype, outside Γ) ;
-  unified density = truth = accuracy (R6) ;
-  re-stated M↔N coupling as asymmetric at expression (§A.6/§F), independent only in evolution (§E) ;
-  split gene anchor into home (where) vs grounding (why) (§B).
 ```
 
 ## §J — Operating loop [grounded R3 — the error-correction cycle]

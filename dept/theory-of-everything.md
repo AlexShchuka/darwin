@@ -108,7 +108,7 @@ This is **the binding constraint** (genome §D): `R→S` open in N ⇒ ΔN = dri
 
 ## §5 — Verified external anchors (FACT, the R→S audit §5)
 ```
-citation-survival 33/33, 0 phantoms (spot-check 5/5). EviBound arXiv:2511.05524 (100%→25%→0%, 8 tasks ~8.3%) EXACT but SINGLE-study ¬law; SAVeR arXiv:2604.08401 (ACL 2026) real.
+citation-survival 33/33, 0 phantoms (spot-check 5/5). EviBound arXiv:2511.05524 (100%→25%→0%, 8 tasks ~8.3%) EXACT but SINGLE-study ¬law; SAVeR arXiv:2604.08401 (ACL 2026) real [cited by thread, ¬Λ].
 industry (multi-sourced) : CodeRabbit 470 PRs ~1.7× +75% logic-bugs ; Google ~75% AI-written (2026) ; Microsoft 20–30% (range ¬"~30%").
 benchmarks : SWE-bench Verified contaminated+saturated (~95% frontier); OpenAI Feb-2026 "deprecation" is what that rests on; SWE-bench Pro harder (Opus 4.5 80.9%→45.9%); Aider Polyglot unit-test-graded (judge-independent); harness-disclosure itself a topic Λ:zhang-2026 (arXiv:2605.23950 — harness often dominates model; proposes disclosure standard).
 analogies (dev-supplied, verified) : Drosophila whole-brain emulation Eon 2026 arXiv:2602.17997 (connectome→behaviour w/o training, validated vs real fly); pygmy-seahorse/coral mutualism PNAS 10.1073/pnas.2423818122 (adaptation by gene-loss, CRISPR-confirmed). Both establish claims by outcome-measurement vs ground truth — the standard the harness lacks.

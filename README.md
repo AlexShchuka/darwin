@@ -41,8 +41,8 @@ English + first-order predicate logic where a real formal object exists; honest 
 ```
 README.md                  this — invariant self-description + tiers + map
 GENOME.md                  CORE: §A carriers/𝕌_local · §A.1 completeness · §A.2 engineering · §A.3 CONST→FUNC
-                           · §B gene algebra · §C density · §D evolution · §E independence · §F gene-loss (symmetric lens)
-                           · §G strata (stability tiers) · §H registry index · §I ledger · §J operating protocol
+                           · §B gene algebra · §C density · §D evolution · §E independence · §F externalization / asymmetric gene-loss lens (seahorse depends on coral; not symmetric peers)
+                           · §G strata (stability tiers) · §H registry index · §I ledger · §J operating loop
 genome/registry-M.md       𝒢|M coral genes (sandbox anatomy + work-items + INV-D/E/F)
 genome/registry-N.md       𝒢|N seahorse genes (invariants + agents + skills + hooks + eval + scripts + refs)
 genome/registry-new.md     𝒢|+ new genes (know/fleet/obs+/domain) + channel genes (sci/web/code)
