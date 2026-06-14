@@ -1,10 +1,10 @@
 # Mined invariants — candidates from the memory dump (Λ-input + candidate Inv)
 
-Source: agent `mem-miner` over `/workspace/claude-memory-backup.tar.gz` — 18 findings, 0 science-contradictions. Status: still **candidate for selection** (R→S not yet run — promotion into `𝒢`/`Inv` is the owner-select step, separate from anchor-truth). Read-back: **COMPLETE (critic-verified against /tmp/membak)** for CI-1/2/3/4/5/7/9/10/11/13 → their FACT tags STAND (anchors confirmed accurate). Exceptions, see those rows: CI-6/CI-14 anchors off-by-one-corrected (:7, :10); CI-12 SPLIT (lexical=FACT / long-term-graph=HYPO); negentropy DOWNGRADED to owner-disclaimed-metaphor lens (¬corroborated); Kaner attribution corrected. INV-C still holds for any future borrowed claim.
+Source: agent `mem-miner` over the owner's claude-memory-backup archive — 18 findings, 0 science-contradictions. Status: still **candidate for selection** (R→S not yet run — promotion into `𝒢`/`Inv` is the owner-select step, separate from anchor-truth). Read-back: **COMPLETE (critic-verified against the memory-backup archive)** for CI-1/2/3/4/5/7/9/10/11/13 → their FACT tags STAND (anchors confirmed accurate). Exceptions, see those rows: CI-6/CI-14 anchors off-by-one-corrected (:7, :10); CI-12 SPLIT (lexical=FACT / long-term-graph=HYPO); negentropy DOWNGRADED to owner-disclaimed-metaphor lens (¬corroborated); Kaner attribution corrected. INV-C still holds for any future borrowed claim.
 
 ## Negentropy principle (why Γ accumulates)  · [ASSOC]
 Read as an analogy, not a derivation: Γ behaves like a dissipative structure — it accumulates information by exporting entropy outward, an island of order/reality. [ASSOC: Schrödinger negentropy · Prigogine dissipative structures (Nobel 1977) · England — order self-assembly serves the 2nd law]
-- status: OWNER-DISCLAIMED METAPHOR / lens, ¬corroborated — the dump itself marks negentropy as a wrapper-metaphor, not a fact (anchor /tmp/membak/memory/daniil-convergence.md:20 "помечено им самим как метафора-обёртка, не факт"; /tmp/membak/daniil/associations-metaphors.md:13 "(он сам пометил — обёртка, не факт)").
+- status: OWNER-DISCLAIMED METAPHOR / lens, ¬corroborated — the dump itself marks negentropy as a wrapper-metaphor, not a fact (memory-backup: memory/daniil-convergence.md:20 "помечено им самим как метафора-обёртка, не факт"; daniil/associations-metaphors.md:13 "(он сам пометил — обёртка, не факт)"). [Session paths removed — durable phrasing retained; provenance is the archive, not an ephemeral /tmp path]
 - consequence [ASSOC]: the evolution of Σ is continuous and iterative — driven by owner, science, and reality together — so the R→S loop runs indefinitely. What accumulates is the union of neuro-matrix invariants, mathematical ideas, code-creation principles, and sandbox implementation.
 
 ## Candidate invariants  (id · target · statement · type · mem-anchor[reported])
@@ -14,7 +14,7 @@ CI-2  N/Γ      reliability = reproducibility ⊕ accuracy (two invariants, trea
 CI-3  N/Γ      a rule survives only if extracted to a deterministic gate OUTSIDE the model FACT  daniil/pains-signals.md:13 (S3)   [≡ the R→S audit's mechanical-home]
 CI-4  N/Γ      cost = parameter, ¬invariant (premature cost-opt risks reliability/accuracy) FACT daniil/invariants.md (I8)
 CI-5  N/Γ      conflicting invariants → escalate to human arbiter (no deterministic resolver yet) FACT daniil/gaps-contradictions.md:4 (C1)
-CI-6  Γ/N      system boundary is goal-dependent, never neutral (borderless paralyzes)     FACT  daniil/comms-channel.md:7  [ASSOC Meadows]
+CI-6  Γ/N      system boundary is goal-dependent, never neutral (borderless paralyzes)     ASSOC  daniil/comms-channel.md:7  [ASSOC Meadows — (not in Λ — unverified); demoted from FACT: anchor is owner-memory + bracketed Meadows reference, no Λ source]
 CI-7  Γ/N      owner-invariant architecture: core owner-independent; owner-knowledge=swappable module FACT memory/associative-chains.md:14
 CI-8  M/N      boundary contracts state WHERE each leg executes; mocking a boundary proves nothing FACT memory/dev-principles.md:9
 CI-9  M/N      SRP in infra: sandbox isolates · VPN+killswitch on host owns network · ¬mix FACT  daniil/invariants.md:24 (I11)

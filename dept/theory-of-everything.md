@@ -49,7 +49,7 @@ edges [FACT, the R→S audit §2; ✓=holds ⚠=weak ✗=broken] :
   E  ──measures─▶ P,H,A    ✗ SEVERED — McNemar inverted (§3) ∧ judge=generator
   R  ──feeds──▶   E        ✗ MISSING — no vanilla arm (run_suite.py:214-219); no ext benchmark
   E  ──selects──▶ S        ✗ consequence — selection signal never reaches the mutations
-  R  ──felt──▶ N1 ──▶ S    ⚠ only live path; routes through a miscalibrated node (introspection; cf METR)
+  R  ──felt──▶ N1 ──▶ S    ⚠ only live path; routes through a miscalibrated node (introspection) [ASSOC — introspection-as-miscalibration is a lens, not a measured result; unverified here]
   README ─claims▶ all      ⚠ showcase > code (Nash / 2026-SOTA / pre-registered / 4≠5 agents)
 ```
 Graph-property verdict [FACT, the R→S audit §2]: there is no working path from R to S — the intended loop R→E→S is cut at E (the severed R→S edge). So the generator (P, H, A, C, S) is built and works, but the feedback edge back to reality is open. "100 mutations from sessions" is therefore variation plus heredity *without* differential selection — the selection sieve is open. In Lewontin's terms: variation is present, heredity is present (invariants.txt + git), but selection-by-environment is absent — so this is drift, not adaptation. Formalizing the graph in SysML (an internal block diagram) or Z (a state-schema with edge-predicates) would make "R→S absent" mechanically checkable rather than rhetorical (V7).
@@ -78,8 +78,10 @@ This is **the binding constraint** (genome §D): `R→S` open in N ⇒ ΔN = dri
 4a ESTABLISHED-FRAMING (load-bearing today) :
   principal-agent / information-asymmetry  [ESTABLISHED, the R→S audit §4a]
     "AI = hypothesis-generator w/ more local knowledge; developer-principal decides ∧ bears responsibility" IS a principal-agent structure (repo L6)
-    anchors: Phelps&Ranson 2023 "Of Models and Tin Men" arXiv:2307.11137 (LLM agents show hidden-action w/o controlling harness);
-             Hadfield-Menell 2021 (UC Berkeley, CIRL/off-switch); repo arXiv:2601.23211, arXiv:2504.03255
+    anchors: Λ:phelps-ranson-2023 (LLM agents show hidden-action w/o controlling harness; GPT-3.5/GPT-4 override principal objectives);
+             Hadfield-Menell 2021 (UC Berkeley, CIRL/off-switch) [ASSOC — not in Λ, unverified here];
+             Λ:rauba-2026 (multi-agent systems should be treated as principal-agent problems; scheming + information asymmetry);
+             Λ:gabison-xian-2025 (liability in LLM-based agentic systems via principal-agent lens; accepted ACL 2025)
     caveat(corrected) : ONE alignment framing, ¬"the central schema" — coexists w/ RLHF/RLAIF, reward-modelling, scalable-oversight, debate
 4b ANALOGY (ASSOC — a working lens, ¬mechanism) :
   dynamical-systems / attractors / edge-of-chaos  [ASSOC, the R→S audit §4b]  applied to the AGENTIC INFERENCE LOOP (¬weight-training)
@@ -108,9 +110,9 @@ This is **the binding constraint** (genome §D): `R→S` open in N ⇒ ΔN = dri
 ```
 citation-survival 33/33, 0 phantoms (spot-check 5/5). EviBound arXiv:2511.05524 (100%→25%→0%, 8 tasks ~8.3%) EXACT but SINGLE-study ¬law; SAVeR arXiv:2604.08401 (ACL 2026) real.
 industry (multi-sourced) : CodeRabbit 470 PRs ~1.7× +75% logic-bugs ; Google ~75% AI-written (2026) ; Microsoft 20–30% (range ¬"~30%").
-benchmarks : SWE-bench Verified contaminated+saturated (~95% frontier); OpenAI Feb-2026 "deprecation" is what that rests on; SWE-bench Pro harder (Opus 4.5 80.9%→45.9%); Aider Polyglot unit-test-graded (judge-independent); harness-disclosure itself a topic arXiv:2605.23950.
+benchmarks : SWE-bench Verified contaminated+saturated (~95% frontier); OpenAI Feb-2026 "deprecation" is what that rests on; SWE-bench Pro harder (Opus 4.5 80.9%→45.9%); Aider Polyglot unit-test-graded (judge-independent); harness-disclosure itself a topic Λ:zhang-2026 (arXiv:2605.23950 — harness often dominates model; proposes disclosure standard).
 analogies (dev-supplied, verified) : Drosophila whole-brain emulation Eon 2026 arXiv:2602.17997 (connectome→behaviour w/o training, validated vs real fly); pygmy-seahorse/coral mutualism PNAS 10.1073/pnas.2423818122 (adaptation by gene-loss, CRISPR-confirmed). Both establish claims by outcome-measurement vs ground truth — the standard the harness lacks.
-evolution-requires-heredity : Lewontin's 3 conditions (variation, differential-fitness, HERITABILITY) necessary+sufficient (Britannica; SEP). drift = evolution w/o adaptation ⇒ "directed mutation from sessions" needs a fitness signal to be adaptation ¬drift.
+evolution-requires-heredity : Lewontin's 3 conditions (variation, differential-fitness, HERITABILITY) necessary+sufficient — Λ:lewontin-1970 (already in Λ). drift = evolution w/o adaptation ⇒ "directed mutation from sessions" needs a fitness signal to be adaptation ¬drift.
 ```
 
 ## §6 — Development vector (priority-ordered; V1 = binding constraint; each step carries variants per the cross-AI advisory exemplar)

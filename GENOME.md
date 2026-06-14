@@ -15,16 +15,17 @@ R2  error-elimination    knowledge grows by REFUTATION, not proof: conjecture �
                          grounding for R2: self-correction without external signal fails — Λ: huang-2023 · shinn-2023
 R3  feedback/correction  a viable system damps its own deviation (negative feedback); one that amplifies its errors diverges and dies.
                          requisite variety: only variety absorbs variety (regulator variety ≥ disturbance variety).
+                         boundary: negative feedback alone can oscillate or under-damp (gain/phase margins not guaranteed by the sign of feedback alone); Ashby's law assumes the regulator is controllable — if the required variety cannot be generated, the law states failure, not a solution.
                          Λ: wiener-1948 · ashby-1956 · shannon-1948
 R4  directed evolution   variation+heredity+selection act on KNOWLEDGE, not only life; here DIRECTED (in the cultural-evolution sense sometimes called Lamarckian — acquired knowledge is inherited; Mesoudi: cultural inheritance lacks a Weismann barrier, so Lamarckian transmission is the norm in cultural evolution, NOT the refuted biological Lamarckism), not blind; remove selection ⇒ DRIFT, not adaptation.
                          boundary: a substrate-neutral methodological frame, not the only possible one.
                          Λ: lewontin-1970 · dennett-1995 · mesoudi-2011 · mesoudi-2017
 R5  emergence            a whole is DIFFERENT from (not merely "more than") the sum of its parts; new properties appear with scale.
-                         boundary: weak emergence still admits part-wise explanation; "different" (Anderson's own word) is exacter than "greater".
+                         boundary: weak emergence still admits part-wise explanation; "different" is Anderson's own framing (from the title "More is Different"); the exact sentence "different from the sum of parts" is the commentators' gloss — the idea is Anderson's, the precise wording is paraphrase.
                          Λ: anderson-1972 · bertalanffy-1968 · laughlin-2005
 R6  compression≈understanding   the shortest FAITHFUL description is the best model; compression and prediction are one. ⇒ density, truth and accuracy are ONE description of one thing — without them the system is wrong.
-                         boundary: exact compression is incomputable (approximations only); no universal prior (no-free-lunch); faithful ≠ merely-short (truncation loses meaning).
-                         Λ: kolmogorov-1965 · solomonoff-1964 · rissanen-1978 · li-vitanyi
+                         boundary: exact compression is INCOMPUTABLE (Kolmogorov/Solomonoff incomputability — no computable universal prior exists; approximations only); faithful ≠ merely-short (truncation loses meaning). Separate result: no-free-lunch (Wolpert & Macready 1997) — no single optimization algorithm outperforms all others averaged over all problems; this is a distinct result from incomputability, not a corollary of R6.
+                         Λ: kolmogorov-1965 · solomonoff-1964 · rissanen-1978 · li-vitanyi · wolpert-macready-1997
 ```
 The owner's truth-criterion is R1+R2+R3 itself: no self-proof (R1) ⇒ three independent witnesses (owner · AI · reality); growth by refutation (R2); converge-or-halt on disagreement (R3). The one irreducible commitment is to reason-and-correction itself — *defended, not proved* (Λ: popper-1945), held open to revision. So even the floor is not fiat.
 
@@ -91,7 +92,7 @@ SCRATCH outside Γ : session-dumps, drafts, critic-findings — short-lived, exp
 Law [R6]: Γ stores the COMPRESSED state + open work, never raw run-status / per-session logs / code-churn (those rot). Λ = scientific sources only (ref + claim + lastVerified), deduped.
 
 ## §H — Registry
-- BODY: `genome/registry-{M,N,new}.md` · `projections.md` · `mined-invariants.md` · `archive/archive.md` (Λ).
+- BODY: `genome/registry-{M,N,new}.md` · `projections.md` · `mined-invariants.md` · `design-principles.md` (G0–G12) · `archive/archive.md` (Λ).
 - DEPT: `dept/theory-of-everything.md` · `dept/graph-plan-{harness,sandbox,communication}.md`.
 - Vec: `vectors/{vectors,bugs,fix-graph,idea-exchange}.md`.
 

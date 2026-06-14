@@ -1,4 +1,4 @@
-# improve/N — what & how to improve the seahorse (neuro-matrix, behaviour)
+# graph-plan-harness (improve/N) — what & how to improve the seahorse (neuro-matrix, behaviour)
 
 Organ `N` = harness = behaviour phenotype (§A GENOME). Anchor: live `AlexShchuka/neuro-matrix` + the R→S audit (the development-vector source). This file answers **WHAT** to improve and **HOW**, strictly ordered by leverage. Encoding: English + FOL where a real formal object exists; honest dense prose elsewhere (§C). Per-claim tag `FACT·ASSOC·HYPO·Q`; FACT carries a file/issue/PR anchor. No invention: a proposed invariant or run is `HYPO` until landed/executed.
 
@@ -110,7 +110,7 @@ Caveats (honest):
 
 ### 2.3 — Mission frame
 
-INV-A is the *self-application* of `G0` (system-over-nodes) to `N`'s own outputs: it makes the harness reason at the ecosystem level by rule, not by reminder. INV-B keeps `G2` (sandbox≠harness) from eroding as modules are added (it is the behavioural mirror of sandbox.md's scope law). INV-C closes a hole in invariants #1/#4: claims that arrive *through* an agent or *from* the owner are still external-state claims and need an anchor (the owner explicitly is held to invariant #1's bar — "user-asserted external-state claims are held to the same bar", `invariants.txt:#1`).
+INV-A is the *self-application* of `G0` (system-over-nodes; defined genome/design-principles.md) to `N`'s own outputs: it makes the harness reason at the ecosystem level by rule, not by reminder. INV-B keeps `G2` (sandbox≠harness; defined genome/design-principles.md) from eroding as modules are added (it is the behavioural mirror of sandbox.md's scope law). INV-C closes a hole in invariants #1/#4: claims that arrive *through* an agent or *from* the owner are still external-state claims and need an anchor (the owner explicitly is held to invariant #1's bar — "user-asserted external-state claims are held to the same bar", `invariants.txt:#1`).
 
 ---
 

@@ -2,8 +2,9 @@
 
 Anchor: live `AlexShchuka/neuro-matrix` (¬ stale-plugin 0.1.0) + the R→S audit. genes grouped by family; schema §B GENOME. default `α_M=⊥` (behaviour ≠ mechanism), `δ`=executed/sampled by hook, `φ`=eval loop (R→S). binding-constraint: `R→S` open (the R→S audit §3); gate fixed = FACT (`eval/statistical_test.py:196` McNemar upper tail, `:265-267` rater-aware Krippendorff α) but the merge-status of the eval-gate fixes is agent-reported (unverifiable here) ⇒ ΔN=drift until φ selects.
 
-## G|inv — invariants (31; `invariants.txt`) · τ=FACT
-`α_N`=deontic rule · `α_M`=mechanical home where one exists (plan node 50) · `δ`=risk-weighted sample `random-invariant.sh` (crit×3/imp×2/style×1) · `φ`=eval probes · `κ`=`invariants.txt#N`
+## G|inv — invariants (31; `invariants.txt`) · τ=FACT (existence in invariants.txt) / see per-row grounding
+`α_N`=deontic rule · `α_M`=mechanical home where one exists (plan node 50) · `δ`=risk-weighted sample `random-invariant.sh` (crit×3/imp×2/style×1) · `φ`=eval probes · `κ`=`invariants.txt#N` [home only — §B: validity comes from grounding (Λ/§0), not from home]
+grounding note: τ=FACT on each row means the invariant EXISTS in `invariants.txt` (FACT = mechanical home confirmed). Scientific grounding for why it holds is separate — deontic engineering maxims without a Λ/§0 root are [eng-choice], not FACT-grounded. "no 3rd of a kind" (#7) is an eng-choice convention [eng-choice]; "protocol in own interest" (#19) grounds in R2 (refutation/anti-sycophancy). Full grounding per invariant is out of scope here; this note flags the discipline.
 ```
 #1  crit O  claim↔tool-output (no claim w/o evidence; owner-claims held to same bar)
 #2  crit F  no mutation w/o explicit consent          ⟂ mutation-gate

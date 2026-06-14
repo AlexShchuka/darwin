@@ -1,10 +1,10 @@
-# improve/M — what & how to improve the coral (mirabilis, mechanism)
+# graph-plan-sandbox (improve/M) — what & how to improve the coral (mirabilis, mechanism)
 
 Organ `M` = sandbox = mechanism phenotype (§A GENOME). Anchor: `/workspace/mirabilis` (live git, Go). This file answers, per gene, **WHAT** to improve and **HOW** — concrete, to the file. Encoding: English + FOL where a real formal object exists; honest dense prose elsewhere (§C). Per-claim tag `FACT·ASSOC·HYPO·Q`; FACT carries a `file:line` / repo / issue anchor. No invention: where a Δ is a plan not a landed fact, it is `HYPO`.
 
-Scope law (G2, owner memory): `M` provisions + exposes a tool/service (config-driven, replaceable, observable, bounded); behavioural use (when-to-search, judging, routing) belongs to `N`. A Δ that decides *when* or *whether* to use a mechanism is mis-placed in `M`.
+Scope law (G2; defined genome/design-principles.md): `M` provisions + exposes a tool/service (config-driven, replaceable, observable, bounded); behavioural use (when-to-search, judging, routing) belongs to `N`. A Δ that decides *when* or *whether* to use a mechanism is mis-placed in `M`.
 
-Mission-frame (INV-A; do not justify a Δ by "saves tokens"): the ecosystem goal is ⟨truth, capability-across-domains, self-sufficiency, evolvability⟩ [owner memory]. Every work-item's rationale must serve that goal; token/$ economy is a *consequence* of a work-item, never its rationale. The goals nest and are inherited downward — ecosystem (working with AI) ⊃ sandbox (provisioning) ⊃ each feature-module Wi.
+Mission-frame (INV-A; do not justify a Δ by "saves tokens"): the ecosystem goal is ⟨truth, capability-across-domains, self-sufficiency, evolvability⟩ — grounded: truth/accuracy ↔ R4+R6 (a knowledge-system not tracking reality is selected against; density=truth=accuracy are one thing); evolvability ↔ R4 (variation+heredity+selection; without selection → drift). Every work-item's rationale must serve that goal; token/$ economy is a *consequence* of a work-item, never its rationale. The goals nest and are inherited downward — ecosystem (working with AI) ⊃ sandbox (provisioning) ⊃ each feature-module Wi.
 
 ---
 
@@ -23,7 +23,7 @@ Leverage of a work-item rises with mission-reach and organ-health gain, and fall
 
 ```
 gene G-cav : α_M = install + session-flag ; α_N = terse skill (projections.md:25)
-κ_external : github.com/JuliusBrussee/caveman   [FACT, repo viewed: 72k★, public]
+κ_external : github.com/JuliusBrussee/caveman   [FACT, repo viewed: public]
 mechanism(caveman) [FACT, README + INSTALL.md viewed] :
   skill "caveman" (terse output)  ⊕  Claude-Code hook + statusline badge  ⊕  skill "caveman-compress" (compress memory files)
   ⊕ opt-in MCP "caveman-shrink" (--with-mcp-shrink)        cuts ~75% output tokens, "brain big, mouth small"

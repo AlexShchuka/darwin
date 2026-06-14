@@ -19,7 +19,7 @@ Deliverable projection: **plan** (the R→S audit's dev-vector: close `R→S`, f
 
 ## Organ coupling (biallelic genes ∈ V_M ∩ V_N)
 ```
-G-harness   install N→M mechanism (M) ⊕ installed behaviour (N)     [primary coupling = wiring: M expresses N into env(M); symmetric peers, ¬life-dependence (§A.6/§F)]
+G-harness   install N→M mechanism (M) ⊕ installed behaviour (N)     [primary coupling = wiring: N is installed INTO M (asymmetric at expression; §A.6/§F); evolution-clocks are independent (§E), not expression]
 G-rtk       provision (M) ⊕ filter-hook (N)
 G-hed       provision (M) ⊕ mode (N)
 G-cav       install+flag (M) ⊕ terse skill (N)
@@ -28,9 +28,9 @@ G-know      membackup (M) ⊕ recall-discipline (N)
 G-obs+      obs sink (M) ⊕ feedback-interpretation (N)
 G-hook      plugin install (M) ⊕ runtime gate (N)
 ```
-∴ `Σ = M ⊕ N` are coupled not by document links but by **shared genes** (one gene, two alleles) and the **shared ocean** `Γ`/env.
+∴ `Σ = M ⊕ N` are coupled not by document links but by **shared genes** (one gene, two alleles) and the **shared environment** `ℛ` / genome `Γ`.
 
-## Independent evolution in the shared ocean (§E)
+## Independent evolution in the shared environment ℛ / genome Γ (§E)
 M, N, Γ evolve on their own clocks, with no shared mutable state. Each one's environment is reality ℛ plus the public interfaces of the others — and nothing more: M sees N's public interface (via G-harness) and Γ; N sees M's interface and Γ; Γ sees both M's and N's interfaces (and so describes both, within the self-description limit of §F). Each must read its own environment or it maladapts.
 
 ## Ledger

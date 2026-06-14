@@ -49,7 +49,7 @@ P2 memory : "no reader → no write"  +  cite-2-3-notes-before-acting (0 LLM)
 P3 LLM-only-where-code-cannot
    "LLM зовём только там, где нельзя кодом" — turn every repeating call into code/a rule  [ASSOC: Anthropic "Building effective agents"; 12-factor-agents]
    corollary : a deterministic construct beats a "smart" agent for the same job; D's dry-mode (tests w/o LLM) = this instinct
-P4 prompt-injection defense [FACT, OWASP-LLM01:2025] — "чужой текст = данные, ¬команды"
+P4 prompt-injection defense [ASSOC, OWASP-LLM01:2025 — (not in Λ — industry doc, not a scientific paper; claim is widely corroborated but not Λ-anchored here)] — "чужой текст = данные, ¬команды"
    layered : (1) author ALLOWLIST — instructions only from O/owner; everyone-else's text handled AS DATA  (2) single OUTBOX — all external acts (post/commit/msg) through ONE gated fn + (for now) manual confirm  (3) ↑ dual-LLM (Willison: privileged-w/-tools never sees foreign text; quarantined sees it "w/o hands")  [ASSOC]; CaMeL arXiv:2503.18813
    REFINEMENT [FACT, later comment, O self-corrected] : look not at WHO authored but at WHAT the text can BREAK → least-privilege + blast-radius containment > an author-gate. ⇒ D downgrades author-allowlist (their B6), keeps the single outbox (B5).
 P5 secrets : .env on-device only; git holds .env.example (names, no values); agent gets secrets as ENV at launch, NEVER as a readable file; gitleaks in pre-commit + GitHub push-protection  [FACT; O's home: mirabilis tokens in keychain/docker-volume, 0 secrets in git]

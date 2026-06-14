@@ -1,6 +1,6 @@
 # Darwin — genome · universe · library · theory of the ecosystem
 
-Named after Charles Darwin (evolution). This repository **is** the `𝕌_local` of a two-organ AI ecosystem: its **genome** (structure), its **ocean** (environment/invariants), its **library** (external sources), its **theory** (formal model). Two organs live in it and are shaped by it:
+Named after Charles Darwin (evolution). This repository **is** the `𝕌_local` of a two-organ AI ecosystem: its **genome** (structure), its **environment ℛ / reality** (the external arbiter; invariants grounded in it), its **library** (external sources), its **theory** (formal model). Two organs live in it and are shaped by it:
 - **M** = mirabilis (sandbox / mechanism phenotype) — "coral" · `github.com/AlexShchuka/mirabilis`
 - **N** = neuro-matrix (harness / behaviour phenotype) — "seahorse" · `github.com/AlexShchuka/neuro-matrix`
 
@@ -44,6 +44,7 @@ genome/registry-N.md       𝒢|N seahorse genes (invariants + agents + skills +
 genome/registry-new.md     𝒢|+ new genes (know/fleet/obs+/domain) + channel genes (sci/web/code)
 genome/projections.md      proj_M / proj_N : two graphs from one 𝒢
 genome/mined-invariants.md candidate invariants from the memory dump (CI-1..14 + comms primitives)
+genome/design-principles.md design principles G0–G12 (sandbox/engineering; home for all Gn references)
 archive/archive.md         Λ external sources by department (dedup; upstream research-anchors.md)
 dept/theory-of-everything.md     the R→S audit — formal-methods spec + cross-disciplinary graph + dev-vector R→S/V1–V7
 dept/graph-plan-harness.md       what & how to improve N (vector: close R→S first)

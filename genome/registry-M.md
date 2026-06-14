@@ -1,6 +1,7 @@
 # 𝒢|M — genes of the coral (mirabilis, mechanism phenotype)
 
 Anchor: `/workspace/mirabilis` (live git, ≈9.6k LoC Go). `package ≡ gene`. existence = FACT (listing + package-doc read); role = FACT where read, ASSOC where name-only. `α_N = ⊥` by default (mechanism ≠ behaviour). Schema: §B GENOME.
+home vs grounding (§B discipline): `κ` points are `home` — WHERE a gene lives (code path). They are mechanical and may rot. `grounding` = WHY the gene holds: the scientific source in Λ or a §0 root. Validity comes from grounding, never from κ. Engineering-convention genes without a Λ/§0 root carry [eng-choice], not FACT-grounded.
 
 ## Anatomy (package = gene)
 ```
