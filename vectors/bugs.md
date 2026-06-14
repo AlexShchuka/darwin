@@ -44,6 +44,30 @@ eval-power   N too small                              [OPEN]
      status : named as remaining work in the vanilla-baseline-arm comment; gated on the same "run when less raw" decision.
 ```
 
+## §Parked — items with explicit triggers (transient/Vec; discard when landed)
+
+```
+WSL2-canary   docker-in-WSL2 E2E canary + failure notification   [PARKED]
+     source   : mirabilis#121 L1 (ex-P6)
+     trigger  : date ≥ 2026-06-16 (VS2026 runner-image migration settles)
+     current state [FACT, mirabilis#121-L1, verified vs main 4c982a7 on 2026-06-11]:
+       - canary.yml on main has no windows job and no `if: failure()` notification step
+       - ci.yml:88-93 windows-wsl leg (windows-2025, Vampire/setup-wsl v7) smokes only install.sh;
+         the actual docker-in-WSL2 container path is unexercised by CI
+     work when triggered:
+       - add a best-effort `windows-2025` CI job in canary.yml, `continue-on-error: true`
+       - add `if: failure()` step → create/update a tracking issue (failure notification)
+       - Docker install via get.docker.com or `apt-get install docker-ce` + `sudo service docker start`
+     sharp edges (pre-researched, carried from #85):
+       - WSL keep-alive: `wsl -d Ubuntu --exec dbus-launch true`
+       - use `127.0.0.1` not `localhost` inside WSL2
+       - iptables-legacy fallback (microsoft/WSL#6655)
+       - env bridging via WSLENV
+       - `windows-11-arm` excluded (actions/runner-images#14076, Vampire/setup-wsl#74)
+     note: #121 L2 (telegram extensions) and L3 (Common Code consumer-side) are already in the
+           genome; this entry covers L1 only. Discard this parked entry once canary job is landed.
+```
+
 ## §I — Ledger (this entry)
 ```
 FACT  : the eval-gate fixes exist as the R→S audit comments with the statuses above; each fix verified vs the named non-LLM ground truth + golden-tested to fail on the old behaviour; eval-power N=17 stated in the vanilla-baseline-arm comment.

@@ -10,7 +10,7 @@ Mission-frame (INV-A; do not justify a Δ by "saves tokens"): the ecosystem goal
 
 ## 0 — Ordering by leverage
 
-Leverage of a work-item rises with mission-reach and organ-health gain, and falls with cost. Resulting order: G-cav ≻ W1 ≻ W2 ≻ W8 ≻ W7 ≻ W3 ≻ W6 ≻ W5 ≻ W4. Rationale:
+Leverage of a work-item rises with mission-reach and organ-health gain, and falls with cost. Resulting order: G-cav ≻ W1 ≻ W2 ≻ W8 ≻ W7 ≻ W3 ≻ W6 ≻ W5 ≻ W4 ≻ W9 ≻ W10. Rationale:
 - `G-cav` first: a **standing catalog entry already exists** (`config/skills.txt:2` = `juliusbrussee/caveman`) yet there is **no provision step + no session-flag wiring** (HYPO; §1) ⇒ adopting AS-IS is the cheapest mission-positive Δ (self-sufficiency of the dialogue channel; communication.md) and removes a genome↔repo contradiction (§7-C1).
 - `W1` (localllm) next: highest *capability+self-sufficiency* reach (a host model becomes a first-class, replaceable, sanitized tool) and lands two invariant-genes `INV-D, INV-E` (registry-M:51-54).
 - `W2` (telegram) lands `INV-F` (bound-IO) — remote presence is a mission organ (owner↔AI; communication.md), but below W1 because the watcher is *already* bounded (`watcher.go:25` ticker, `:38-44` panic→degraded); the open gap is narrower (detection breadth + delivery retry).
@@ -214,6 +214,57 @@ WHAT: remove the standalone attach step if it is redundant with the launch/attac
 State (verify, FACT): `attach.go:13-43` is a `pipeline.Terminal` step (`Check`→`false` always, `:26-28`) emitting `EvWaiting{argv,env}`; `AttachExec` (`:45-54`) builds the attach argv with a gh token. A separate attach also exists in `sandbox/attach.go`. ⇒ candidate duplication. `HYPO`: "standalone" = the steps-level one; confirm it is dead before deleting (`I11` no dead code; PR-diff review is its mechanical home).
 
 HOW (Δ): delete the standalone step + its wiring + tests once confirmed unused (`G1` no churn, pure subtraction). Lowest leverage (cleanup) ⇒ last.
+
+---
+
+## 10 — W9 · cross-cluster back navigation  [eng-choice; deferred from #131]
+
+```
+W9 : G-pipeline, G-steps, G-tui        registry-M (work-item list)
+κ   : /workspace/mirabilis/internal/engine/pipeline/pipeline.go   [home]
+      /workspace/mirabilis/internal/tui/router/router.go           [home]
+source: mirabilis#132 L1 (agreed deferral from PR #131)
+```
+
+WHAT: the config wizard (`stacks`/`plugins`/`skills`) supports `shift+tab` back within its three groups (intra-cluster), but there is no way to step back **across pipeline steps** — e.g. from `gh-auth`/`telegram`/`attach` back into the config wizard. `esc` cancels the whole launch instead of rewinding one step. `HYPO` (deferred, not yet coded).
+
+State [home, tagged — not grounding]:
+- `pipeline.go` — `Pipeline.Run` iterates `p.steps` forward-only with a forward-only `states` map; `Resume(step, r)` delivers only to the *currently-waiting* step and returns an error otherwise; once a step's `Run` goroutine returns and the loop advances, there is no rewind/replay primitive. `[home: pipeline/pipeline.go, mirabilis#132-L1]`
+- `HYPO` — no rewindable-step primitive exists today; the pipeline FSM is forward-only by construction.
+
+HOW (Δ, eng-choice/HYPO — plan not landed):
+Two candidate approaches from the issue, both non-trivial:
+1. **Rewindable FSM** — a step stack with backward `Resume`; must be side-effect-aware (image build / provision cannot be trivially undone); weigh against G7 idempotency.
+2. **Front-load all interactive choices** before any side-effecting step — redesign so the pipeline collects all user config upfront, then executes. Avoids rewind semantics entirely.
+
+Mission frame: owner navigability across the full launch flow = lower owner friction; bounded interactive wait preserved. Deliberately deferred from PR #131 as an architecture change beyond a UX wave; not a launch blocker.
+
+`[eng-choice]` — the choice between rewindable-step vs front-load is owner-gated architecture decision. `HYPO` until a design is chosen and landed.
+
+---
+
+## 11 — W10 · adaptive overlay form sizing  [eng-choice; deferred from #131]
+
+```
+W10 : G-tui, G-bus, G-router        registry-M (work-item list)
+κ   : /workspace/mirabilis/internal/tui/router/router.go    [home]
+      /workspace/mirabilis/internal/tui/app/screens.go       [home]
+      /workspace/mirabilis/docs/tui-principles.md (P1)       [home]
+source: mirabilis#132 L2 (agreed deferral from PR #131)
+```
+
+WHAT: a form pushed mid-launch (config wizard, telegram, gh-auth) renders at huh's natural size until a `WindowSizeMsg` arrives; at very small viewports the overlay box clips content (a description line can push options off-screen). Normal/realistic sizes (>=50×20) render fully — verified. This is an edge, not a launch blocker, and is pre-existing behaviour shared by all overlay forms (not introduced by PR #131). `HYPO` (deferred, not yet coded).
+
+State [home, tagged — not grounding]:
+- `router.go` — `router.Model.Update` on `bus.ScreenPush` calls `s.Init()` but does **not** forward the current window size to the freshly-pushed screen. `[home: tui/router/router.go, mirabilis#132-L2]`
+- `screens.go` — `formScreen.Update` calls `form.SetSize` only on `tea.WindowSizeMsg`; a pushed form is therefore unsized until the next terminal resize event. `[home: tui/app/screens.go, mirabilis#132-L2]`
+
+HOW (Δ, eng-choice/HYPO — plan not landed):
+On `ScreenPush`, deliver the current `winW/winH` to the new screen — either (a) the app re-emits a `WindowSizeMsg` after a push, or (b) the push carries dimensions explicitly. The form sizes itself to the overlay's inner area. Satisfies the Adaptive Layout principle (`docs/tui-principles.md P1`). Small and contained.
+
+Mission frame: owner sees full form content at all tested viewports = fidelity of the interactive channel. Low enough blast-radius to be self-contained once prioritized. Explicitly deferred from PR #131.
+
+`[eng-choice]` — exact delivery mechanism (re-emit vs carry) is owner/reviewer preference. `HYPO` until landed.
 
 ---
 

@@ -46,6 +46,8 @@ W5 vscode open "/"                      → G-sandbox
 W6 lint+arch-lint into image           → .devcontainer/Dockerfile
 W7 bounded proxy wait + ctx sleep      → G-hooksM,G-provision
 W8 SearXNG websearch (new gene)        → G-websearch,G-config,compose
+W9 cross-cluster back-nav (rewindable FSM / front-load)  → G-pipeline,G-steps,G-tui   [eng-choice/HYPO; deferred mirabilis#132-L1]
+W10 adaptive overlay form sizing on push  → G-tui,G-bus   [eng-choice/HYPO; deferred mirabilis#132-L2]
 ```
 
 ## M invariant-genes (plan node 50; HYPO until landed; home = lint/contract-test/CI)
