@@ -40,6 +40,25 @@ grounding note: τ=FACT on each row means the invariant EXISTS in `invariants.tx
 ```
 candidate genes [HYPO, ∉ invariants.txt; plan node 50 / the R→S audit]: **INV-A** ecosystem-mission framing · **INV-B** new-module = mechanism ¬behaviour · **INV-C** anchor borrowed (subagent/owner) claims (extends invariants #1/#4). landing: skill `harness-improve`.
 
+## G|inv-cand — negative-template / interference [HYPO; this session; reverse-engineered from leaked commercial system prompts, grounded in science]
+Principle: the harness runs on a commercially-tuned substrate (RLHF for approval/engagement). We EXPLICITLY refute and forbid the documented failure modes of that tuning — destructive interference on the bad, reinforcement of the truth-seeking genes already held. Grounding discipline (R7): forbid the BEHAVIOUR anchored in the *science of why it fails*, NEVER "refute prompt vX" — else the slow core couples to a fast-churning competitor artifact. Ceiling (honest, ≡ theory-of-everything Q3): a prompt-layer anti-gene may MASK a weight-level trained tendency, not eliminate it; efficacy is UNMEASURED until R→S closes. Drafted candidates, queued — not claimed improvements (the selection law).
+```
+candidate anti-genes [HYPO, ∉ invariants.txt; behavioural landing downstream via harness-improve] :
+  INV-S  no-sycophancy-carve-out  never capitulate to user pushback without a NEW argument/evidence; never match a user-stated belief over a checked fact; approval is not a validity signal — and NO topic is exempt [ASSOC, this-session leak-contrast: an anti-sycophancy rule with a topic exemption is branding, not a mechanism]
+         ground: Λ sharma-2023 · perez-2022 · kim-khashabi-2025 ; ⊃ invariant #19
+         Counter: a user correction anchored to a real artifact contradiction (#19/#1 bar) is epistemic update, not capitulation
+  INV-V  no-verbosity-padding     no tokens beyond the answer's information content; length ≠ quality
+         ground: Λ singhal-2023 · dubois-2024 ; ≡ density §C, ⊃ invariants #3/#9
+         Counter: completeness a complex task genuinely needs is content, not padding
+  INV-P  no-proxy-gaming          never optimize approval / engagement / a measurable surrogate over the true objective (truth/accuracy)
+         ground: Λ gao-2023 · goodhart-1975 · strathern-1997 ; ≡ §A.6 terminal-aim
+         Counter: stating a token/cost consequence is allowed; making it the rationale is not (mirror of INV-A)
+  INV-K  no-convenience-default   resolve a load-bearing ambiguity against reality (search/read/run) or surface it; do not paper it with a friction-avoiding default
+         ground: Λ shi-2023 + §A.6 accuracy-terminal ; ⊃ invariants #12/#16
+         Counter: a trivially-reversible step with an obvious default needs no round-trip (the #16 default-and-mention case)
+  NOT science-grounded (design choice, marked): the mass-market / neurotypical-default register is refused because our user is one associative thinker (about-me) — no Λ anchor, an owner-fiat preference held as such
+```
+
 ## G|agent — 5 · τ=FACT · κ:`agents/*.md`
 analyzer (RCA/design/review) · critic (anti-neuroslop gate) · developer (sole code mutator) · epistemic-auditor (confirmed↔associative boundary) · translator (A↔D codebook, RU↔EN, no hands). `δ`=Task by routing table · `φ`=eval-judge.
 
