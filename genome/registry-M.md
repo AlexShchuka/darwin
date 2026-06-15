@@ -69,8 +69,8 @@ W-arch-C LANDED-PENDING — mirabilis PR#135 (CI in-flight; NOT merged to main):
 
 OPEN plan:
   W8 SearXNG websearch (new gene)        → G-websearch,G-config,compose
-  W9 cross-cluster back-nav (rewindable FSM / front-load)  → G-pipeline,G-steps,G-tui   [eng-choice/HYPO; deferred]
-  W10 adaptive overlay form sizing on push  → G-tui,G-bus   [eng-choice/HYPO; deferred]
+  W9 cross-cluster back-nav (rewindable FSM / front-load)  → G-pipeline,G-steps,G-tui   [eng-choice/HYPO; deferred; PREMISE-REEVAL: owner/secondary model removed — all TUI instances are equal clients (arch-C); serve-daemon exists; the "back to which cluster?" problem is unchanged (pipeline is still forward-only FSM); original motivation (owner navigating across steps) STANDS; rewindable-FSM vs front-load choice still open]
+  W10 adaptive overlay form sizing on push  → G-tui,G-bus   [eng-choice/HYPO; deferred; PREMISE-REEVAL: equal-terminals arch-C does not change the form-sizing problem — all equal TUI clients still share the same overlay sizing behaviour; WindowSizeMsg timing gap in router.go STANDS; original problem description VALID; priority relative to W8 unchanged]
 ```
 
 ## M invariant-genes
@@ -79,11 +79,12 @@ INV-D  config/discover ¬hardcode   home: localllm env-overridable config + /v1/
 INV-E  sanitize external-model out  home: SanitizeOutput + table test + mcp_test (offload tool sanitizes at the boundary)
 INV-F  bound IO ¬human-wait         home: notify 4xx-permanent + capped-retry tests; Configure bounded (¬the human-input wait)
 INV-I3 attachStep.Check idempotent  home: Run⇒Check=true (PR#135 fix; was hardcoded false, violating I3)  [HYPO landed-pending PR#135]
+INV-G13 map+doctrine ¬prose-inject  home: engine/sandbox — SystemPromptFile FOL-rendered from config.go single-source; sandbox_context V2 (PR#135)  [HYPO landed-pending PR#135; definition + Counter in genome/design-principles.md; grounded R6+Λ:liu-2023+Λ:shi-2023]
 ```
 
 ## Ledger
 FACT: all packages exist (listing) + package-doc read for authproxy/harness/membackup/obs/localllm. caveman ∈ M wired via plugin catalog (PR#135 in-flight — NOT merged to main; was catalog-only skill before). ASSOC: role of claudeauth/status (name-only).
 CONFLICT-1 RESOLVED: W1 landed integration-only — NO auto-offload hook (D5/D6 honored); caveman↔localLLM stay distinct alleles (§H quartet, channel-disjoint).
 CONFLICT-2 RESOLVED [#30]: the owner approved the config-driven design-reversal; the localllm constants are now env-overridable with the prior hardcoded values as defaults, and SanitizeOutput crosses the model-output trust boundary.
-HYPO: W-arch-C block (G-serve, credential-authority, caveman wiring, headroom G4 knob, sandbox_context V2) — all in PR#135, CI in-flight; status = landed-pending-merge, NOT FACT yet. Will resolve to FACT when owner merges.
+HYPO: W-arch-C block (G-serve, credential-authority, caveman wiring, headroom G4 knob, sandbox_context V2) — all in PR#135, CI in-flight; status = landed-pending-merge, NOT FACT yet. Remains HYPO until explicit owner sign-off.
 ROT-HYGIENE (this iter): volatile `:line` suffixes stripped from κ package-homes (the package is the home; the line rots — §B). PR-status provenance stripped from work-item descriptions (history in git, not genome — §A.4). plan-homes in DEPT plans are file-actionable by design; plan-line-homes left as-is (owner call).

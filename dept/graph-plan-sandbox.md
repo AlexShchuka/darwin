@@ -76,6 +76,8 @@ source: mirabilis#132 L1 (agreed deferral from PR #131)
 
 WHAT: the config wizard (`stacks`/`plugins`/`skills`) supports `shift+tab` back within its three groups (intra-cluster), but there is no way to step back **across pipeline steps** — e.g. from `gh-auth`/`telegram`/`attach` back into the config wizard. `esc` cancels the whole launch instead of rewinding one step. `HYPO` (deferred, not yet coded).
 
+**PREMISE-REEVAL (arch-C, iter-mirabilis-135):** arch-C removed the owner/secondary distinction — all TUI instances are now equal clients. `serve` daemon runs independently (ref-count reap). What changed for W9: the original framing (owner navigating across steps) remains valid — any equal TUI client has the same navigation need; removing the owner/secondary distinction does not collapse the cross-cluster problem, it generalises it (all clients equally want back-nav). What is obsoleted: any W9 rationale that assumed the owner-client had special navigability authority — that framing is gone. Core problem STANDS: pipeline FSM is still forward-only, the rewindable-FSM vs front-load architecture choice is still open.
+
 State [home, tagged — not grounding]:
 - `pipeline.go` — `Pipeline.Run` iterates `p.steps` forward-only with a forward-only `states` map; `Resume(step, r)` delivers only to the *currently-waiting* step and returns an error otherwise; once a step's `Run` goroutine returns and the loop advances, there is no rewind/replay primitive. `[home: pipeline/pipeline.go, mirabilis#132-L1]`
 - `HYPO` — no rewindable-step primitive exists today; the pipeline FSM is forward-only by construction.
@@ -85,7 +87,7 @@ Two candidate approaches from the issue, both non-trivial:
 1. **Rewindable FSM** — a step stack with backward `Resume`; must be side-effect-aware (image build / provision cannot be trivially undone); weigh against G7 idempotency.
 2. **Front-load all interactive choices** before any side-effecting step — redesign so the pipeline collects all user config upfront, then executes. Avoids rewind semantics entirely.
 
-Mission frame: owner navigability across the full launch flow = lower owner friction; bounded interactive wait preserved. Deliberately deferred from PR #131 as an architecture change beyond a UX wave; not a launch blocker.
+Mission frame: client navigability across the full launch flow = lower friction for any equal TUI client; bounded interactive wait preserved. Deliberately deferred from PR #131 as an architecture change beyond a UX wave; not a launch blocker.
 
 `[eng-choice]` — the choice between rewindable-step vs front-load is owner-gated architecture decision. `HYPO` until a design is chosen and landed.
 
@@ -103,6 +105,8 @@ source: mirabilis#132 L2 (agreed deferral from PR #131)
 
 WHAT: a form pushed mid-launch (config wizard, telegram, gh-auth) renders at huh's natural size until a `WindowSizeMsg` arrives; at very small viewports the overlay box clips content (a description line can push options off-screen). Normal/realistic sizes (>=50×20) render fully — verified. This is an edge, not a launch blocker, and is pre-existing behaviour shared by all overlay forms (not introduced by PR #131). `HYPO` (deferred, not yet coded).
 
+**PREMISE-REEVAL (arch-C, iter-mirabilis-135):** arch-C made all TUI instances equal clients; `serve` daemon decoupled. What changed for W10: the overlay sizing problem is a property of the TUI client process, not of the owner/secondary distinction. Equal terminals means every TUI client instance exhibits the same unsized-until-resize behaviour — the problem is neither removed nor narrowed; if anything it affects all equal clients uniformly. What is obsoleted: any framing that assumed only the owner's terminal had the overlay clipping risk — that asymmetry is gone. Core problem STANDS: `router.go` still does not forward `winW/winH` on `ScreenPush`; `formScreen` still only sizes on `tea.WindowSizeMsg`; fix approach (re-emit vs carry) is unchanged.
+
 State [home, tagged — not grounding]:
 - `router.go` — `router.Model.Update` on `bus.ScreenPush` calls `s.Init()` but does **not** forward the current window size to the freshly-pushed screen. `[home: tui/router/router.go, mirabilis#132-L2]`
 - `screens.go` — `formScreen.Update` calls `form.SetSize` only on `tea.WindowSizeMsg`; a pushed form is therefore unsized until the next terminal resize event. `[home: tui/app/screens.go, mirabilis#132-L2]`
@@ -110,7 +114,7 @@ State [home, tagged — not grounding]:
 HOW (Δ, eng-choice/HYPO — plan not landed):
 On `ScreenPush`, deliver the current `winW/winH` to the new screen — either (a) the app re-emits a `WindowSizeMsg` after a push, or (b) the push carries dimensions explicitly. The form sizes itself to the overlay's inner area. Satisfies the Adaptive Layout principle (`docs/tui-principles.md P1`). Small and contained.
 
-Mission frame: owner sees full form content at all tested viewports = fidelity of the interactive channel. Low enough blast-radius to be self-contained once prioritized. Explicitly deferred from PR #131.
+Mission frame: every equal TUI client sees full form content at all tested viewports = fidelity of the interactive channel. Low enough blast-radius to be self-contained once prioritized. Explicitly deferred from PR #131.
 
 `[eng-choice]` — exact delivery mechanism (re-emit vs carry) is owner/reviewer preference. `HYPO` until landed.
 

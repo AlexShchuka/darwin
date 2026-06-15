@@ -8,12 +8,11 @@ Source of these definitions: distilled from `/workspace/plan/00-system.md` (supe
 The superseded plan is the origin; Darwin (Γ) is the canonical home from this point.
 
 ```
-G13 map+doctrine¬prose  system-prompt injected into a session = map (pointers to sources, read-on-demand) +
-                         doctrine (dense FOL invariants); prose narratives → 0. Single canonical source for
-                         any injected taxonomy (config.go); derived text (markdown files, frontmatter) = rot hazard.
-                         Grounding: R6 (density = truth; shortest faithful = best model); liu-2023 (irrelevant
-                         content in context actively lowers accuracy).
-                         [eng-choice; grounded R6 + Λ:liu-2023]
+INV-G13 map+doctrine ¬prose-inject  [INVARIANT; grounded R6 + Λ:liu-2023; home: engine/sandbox — SystemPromptFile FOL-rendered from config.go single-source + sandbox_context V2 (PR#135)]
+  MUST: system prompt injected into a session = map (pointers to sources, read-on-demand) + doctrine (dense FOL invariants only); prose narratives injected → 0; single canonical source for any injected taxonomy (config.go); derived text (markdown files, frontmatter) = rot hazard and FORBIDDEN as injection source.
+  FORBIDDEN: injecting freeform prose, narrative descriptions, or derived markdown into the system context window.
+  Grounding: R6 (density = truth; shortest faithful = best model; irrelevant content actively lowers accuracy — Λ:liu-2023; Λ:shi-2023).
+  Counter: a map pointer to a prose document is allowed (the pointer is dense; the prose is read on demand by the agent, not injected); a single short mandatory label (e.g. session-id header) is not prose-inject.
 
 G0  system-over-nodes    reason at the ecosystem goal level (⟨truth, capability, self-sufficiency, evolvability⟩),
                          not at a local metric (tokens, cost, speed); every Δ is justified by mission-reach.
@@ -88,12 +87,12 @@ G12 panic-degrade       a panic in a subsystem is caught, logged, and the subsys
 | G6 | dept/graph-plan-sandbox.md | R3 |
 | G8 | dept/graph-plan-sandbox.md | [eng-choice] |
 | G12 | dept/graph-plan-sandbox.md | R3 via G6 |
-| G13 | genome/registry-M.md (G-sandbox sandbox_context V2) | R6 + Λ:liu-2023 |
+| INV-G13 | genome/registry-M.md (G-sandbox sandbox_context V2); genome/design-principles.md (this file) | R6 + Λ:liu-2023 + Λ:shi-2023 |
 
 ## Ledger
 ```
-FACT   : G0/G2/G4/G5/G6/G12 grounded in §0 roots or Λ (noted above); G9 grounded Λ:saltzer-1975; G13 grounded R6+Λ:liu-2023.
-HYPO   : G1/G3/G8/G10/G11/G13 are conventions without full scientific grounding — engineering choices that have survived use.
+FACT   : G0/G2/G4/G5/G6/G12 grounded in §0 roots or Λ (noted above); G9 grounded Λ:saltzer-1975; INV-G13 grounded R6+Λ:liu-2023+Λ:shi-2023 — promoted from eng-choice to hard INVARIANT (owner decision, iter-mirabilis-135).
+HYPO   : G1/G3/G8/G10/G11 are conventions without scientific grounding — engineering choices that have survived use.
 Q      : G7/G9/G10/G11 not observed in current file set (defined here for completeness).
 source : distilled from /workspace/plan (superseded); Darwin Γ is the canonical home.
 ```
