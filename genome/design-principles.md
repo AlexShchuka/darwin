@@ -8,6 +8,13 @@ Source of these definitions: distilled from `/workspace/plan/00-system.md` (supe
 The superseded plan is the origin; Darwin (Γ) is the canonical home from this point.
 
 ```
+G13 map+doctrine¬prose  system-prompt injected into a session = map (pointers to sources, read-on-demand) +
+                         doctrine (dense FOL invariants); prose narratives → 0. Single canonical source for
+                         any injected taxonomy (config.go); derived text (markdown files, frontmatter) = rot hazard.
+                         Grounding: R6 (density = truth; shortest faithful = best model); liu-2023 (irrelevant
+                         content in context actively lowers accuracy).
+                         [eng-choice; grounded R6 + Λ:liu-2023]
+
 G0  system-over-nodes    reason at the ecosystem goal level (⟨truth, capability, self-sufficiency, evolvability⟩),
                          not at a local metric (tokens, cost, speed); every Δ is justified by mission-reach.
                          grounding: R5 emergence (the whole is different from the nodes; optimising a node ≠ optimising the system).
@@ -72,22 +79,21 @@ G12 panic-degrade       a panic in a subsystem is caught, logged, and the subsys
 
 | principle | using files | root / Λ |
 |-----------|-------------|----------|
-| G0 | dept/graph-plan-harness.md:113; dept/graph-plan-sandbox.md | R5 |
+| G0 | dept/graph-plan-harness.md; dept/graph-plan-sandbox.md | R5 |
 | G1 | dept/graph-plan-sandbox.md | [eng-choice] |
-| G2 | dept/graph-plan-harness.md:87,96,113,179; dept/graph-plan-sandbox.md; dept/graph-plan-communication.md:57 | §A ontology |
+| G2 | dept/graph-plan-harness.md; dept/graph-plan-sandbox.md; dept/graph-plan-communication.md | §A ontology |
 | G3 | dept/graph-plan-sandbox.md | [eng-choice] |
-| G4 | dept/graph-plan-sandbox.md; genome/registry-M.md:13 | R4 |
-| G5 | genome/registry-M.md:12; genome/registry-new.md:20 | R3 |
+| G4 | dept/graph-plan-sandbox.md; genome/registry-M.md (G-config, G-hed) | R4 |
+| G5 | genome/registry-M.md (G-obs); genome/registry-new.md | R3 |
 | G6 | dept/graph-plan-sandbox.md | R3 |
 | G8 | dept/graph-plan-sandbox.md | [eng-choice] |
 | G12 | dept/graph-plan-sandbox.md | R3 via G6 |
-
-Line-homes into `dept/graph-plan-sandbox.md` were rotted by the W1–W7 prune (§B: home MAY ROT, validity from grounding) — navigate by file/section, not by line.
+| G13 | genome/registry-M.md (G-sandbox sandbox_context V2) | R6 + Λ:liu-2023 |
 
 ## Ledger
 ```
-FACT   : G0/G2/G4/G5/G6/G12 grounded in §0 roots or Λ (noted above); G9 grounded Λ:saltzer-1975.
-HYPO   : G1/G3/G8/G10/G11 are conventions without scientific grounding — engineering choices that have survived use.
-Q      : G7/G9/G10/G11 not observed in current file set (defined here for completeness of the G0–G12 block).
-source : distilled from /workspace/plan (superseded; plan/00-system.md §50); Darwin Γ is the canonical home.
+FACT   : G0/G2/G4/G5/G6/G12 grounded in §0 roots or Λ (noted above); G9 grounded Λ:saltzer-1975; G13 grounded R6+Λ:liu-2023.
+HYPO   : G1/G3/G8/G10/G11/G13 are conventions without full scientific grounding — engineering choices that have survived use.
+Q      : G7/G9/G10/G11 not observed in current file set (defined here for completeness).
+source : distilled from /workspace/plan (superseded); Darwin Γ is the canonical home.
 ```
