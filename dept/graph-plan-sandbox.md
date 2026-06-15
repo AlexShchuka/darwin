@@ -6,7 +6,11 @@ Scope law (G2; defined genome/design-principles.md): `M` provisions + exposes a 
 
 Mission-frame (INV-A; do not justify a Δ by "saves tokens"): the ecosystem goal is ⟨truth, capability-across-domains, self-sufficiency, evolvability⟩ — grounded: truth/accuracy ↔ R4+R6 (a knowledge-system not tracking reality is selected against; density=truth=accuracy are one thing); evolvability ↔ R4 (variation+heredity+selection; without selection → drift). Every work-item's rationale must serve that goal; token/$ economy is a *consequence* of a work-item, never its rationale. The goals nest and are inherited downward — ecosystem (working with AI) ⊃ sandbox (provisioning) ⊃ each feature-module Wi.
 
-**LANDED — mirabilis PR#134 (pruned here, §G self-prune; expressed in registry-M):** W1 localllm config+discovery+Sanitize · W2 telegram detect+progress+4xx-retry · W3 ghauth host-open+copy · W4 attach removal · W5 vscode "/" · W6 toolchain+dependabot-integrity in image · W7 bounded proxy+ctx-sleep · (off-plan, same PR) onboarding/trust/theme suppression + copy-feedback honesty. INV-D/E/F landed (homes green). The plan below = the OPEN work only.
+**LANDED (expressed in registry-M):** W1–W7 + off-plan onboarding/trust/theme suppression + copy-feedback honesty. INV-D/E/F landed.
+
+**LANDED-PENDING PR#135 (CI in-flight; NOT merged to main):** W-arch-C (serve lifecycle, all-TUI-equal, applySecondary removed, attachStep.Check I3) · UX bug-wave (telegram three-state, provision statusbar, header+logo, spinner) · caveman marketplace activation · headroom HEADROOM_MODE G4 knob · sandbox_context V2 (FOL from config.go, sandbox-context.md deleted) · credential-authority in session-hook. [HYPO until merged]
+
+The plan below = the remaining OPEN work only.
 
 ---
 
@@ -19,31 +23,21 @@ Order: G-cav ≻ W8 ≻ W9 ≻ W10. Rationale:
 
 ---
 
-## 1 — G-cav (caveman) — adopt AS-IS  [detail gene; highest leverage]
+## 1 — G-cav (caveman) — WIRED (marketplace+install)  [HYPO landed-pending PR#135]
 
 ```
-gene G-cav : α_M = install + session-flag ; α_N = terse skill (projections.md:25)
+gene G-cav : α_M = marketplace+install via pluginsStep ; α_N = terse skill (projections.md)
 κ_external : github.com/JuliusBrussee/caveman   [FACT, repo viewed: public]
 mechanism(caveman) [FACT, README + INSTALL.md viewed] :
   skill "caveman" (terse output)  ⊕  Claude-Code hook + statusline badge  ⊕  skill "caveman-compress" (compress memory files)
   ⊕ opt-in MCP "caveman-shrink" (--with-mcp-shrink)        cuts ~75% output tokens, "brain big, mouth small"
 ```
 
-WHAT: express `G-cav` into `M` AS-IS — adopt the upstream artifact unchanged; do **not** reimplement (invariant #4 anti-invention; INV-B new-module=mechanism).
+State (post-PR#135, HYPO): caveman wired via plugin catalog — `JuliusBrussee/caveman` in `marketplaces.txt`, `caveman@caveman` in `plugins.txt`; dead `juliusbrussee/caveman` git-clone removed from `skills.txt`; `pluginsStep` installs it via `claude plugin marketplace add` + `claude plugin install caveman@caveman --scope user` (canonical path per official repo `bin/install.js`). Smoke test updated: plugin catalog + marketplace assertions replace the old skills-catalog assertion.
 
-State of the gene in `M` (verify):
-- `FACT` caveman **IS** in the catalog: `/workspace/mirabilis/config/skills.txt:2` = `juliusbrussee/caveman`; covered by smoke test `/workspace/mirabilis/test/token_opt.bats` ("caveman skill is in the skills catalog").
-- `HYPO` caveman is **catalog-only**: no dedicated provision step nor a SessionStart flag wires it on. The generic skills path (`internal/engine/provision/skills.go`) installs entries from `skills.txt`; there is no `caveman`-specific step (cf. `provision/rtk.go`, `provision/headroom.go`, `provision/localllm.go` which are per-tool). ⇒ the genome's `registry-M:33` claim `caveman ∉ M, grep ∅` is **FALSE against the repo** (contradiction §7-C1).
+Channel-disjointness holds [FACT]: caveman = **agent-out** window; RTK = tool-out; headroom = API-window; localLLM = offload. ⇒ ¬duplication.
 
-HOW (Δ, AS-IS, minimal-diff G1/YAGNI):
-1. `FACT-of-state` Keep the catalog line; it is the AS-IS install vector (Claude-Code marketplace skill). No code reimplements caveman.
-2. `HYPO` If "always-on" is desired: add the caveman session-flag the way other quartet members are wired — a SessionStart concern (`internal/hooks/session.go`) or a one-line provision concern, **config-gated** (`G4`: a `config/` flag, not a code constant). Per the projections allele `α_M = install+flag`.
-3. `HYPO` Memory-file compression: caveman ships `skills/caveman-compress` [FACT, contents listed]. The `M` memory channel is `G-know` (`internal/engine/membackup` + `internal/engine/provision/memory.go`, categories at `config/config.go:44-53`). Δ = make `caveman-compress` available to the memory writer; **mechanism only** — *when* to compress is `N`'s recall/write discipline (invariant #31), do not encode a compaction policy in `M`.
-4. Channel-disjointness holds [FACT registry-M:35]: caveman = **agent-out** window; RTK = tool-out; headroom = API-window; localLLM = offload. ⇒ ¬duplication; adopting caveman does not collide with the other three quartet alleles.
-
-Mission frame: caveman raises **density** of the owner↔AI channel (D-functional §C) and shrinks memory footprint → self-sufficiency of the second brain. Token economy is the *consequence*, not the rationale (INV-A).
-
-Caveat: caveman is third-party (invariant #7 human-readable-without-AI applies to what it emits, but the *artifact itself* is an external dependency, not generated copy). `Q`: pin a release/SHA? (mirabilis pins rtk/uv/go by SHA in `.devcontainer/Dockerfile`; a marketplace skill has no SHA-pin path today — open question, not a blocker).
+`Q`: pin caveman by release/SHA? (marketplace skills have no SHA-pin path today — open question, not a blocker).
 
 ---
 
@@ -82,6 +76,8 @@ source: mirabilis#132 L1 (agreed deferral from PR #131)
 
 WHAT: the config wizard (`stacks`/`plugins`/`skills`) supports `shift+tab` back within its three groups (intra-cluster), but there is no way to step back **across pipeline steps** — e.g. from `gh-auth`/`telegram`/`attach` back into the config wizard. `esc` cancels the whole launch instead of rewinding one step. `HYPO` (deferred, not yet coded).
 
+**PREMISE-REEVAL (arch-C, iter-mirabilis-135):** arch-C removed the owner/secondary distinction — all TUI instances are now equal clients. `serve` daemon runs independently (ref-count reap). What changed for W9: the original framing (owner navigating across steps) remains valid — any equal TUI client has the same navigation need; removing the owner/secondary distinction does not collapse the cross-cluster problem, it generalises it (all clients equally want back-nav). What is obsoleted: any W9 rationale that assumed the owner-client had special navigability authority — that framing is gone. Core problem STANDS: pipeline FSM is still forward-only, the rewindable-FSM vs front-load architecture choice is still open.
+
 State [home, tagged — not grounding]:
 - `pipeline.go` — `Pipeline.Run` iterates `p.steps` forward-only with a forward-only `states` map; `Resume(step, r)` delivers only to the *currently-waiting* step and returns an error otherwise; once a step's `Run` goroutine returns and the loop advances, there is no rewind/replay primitive. `[home: pipeline/pipeline.go, mirabilis#132-L1]`
 - `HYPO` — no rewindable-step primitive exists today; the pipeline FSM is forward-only by construction.
@@ -91,7 +87,7 @@ Two candidate approaches from the issue, both non-trivial:
 1. **Rewindable FSM** — a step stack with backward `Resume`; must be side-effect-aware (image build / provision cannot be trivially undone); weigh against G7 idempotency.
 2. **Front-load all interactive choices** before any side-effecting step — redesign so the pipeline collects all user config upfront, then executes. Avoids rewind semantics entirely.
 
-Mission frame: owner navigability across the full launch flow = lower owner friction; bounded interactive wait preserved. Deliberately deferred from PR #131 as an architecture change beyond a UX wave; not a launch blocker.
+Mission frame: client navigability across the full launch flow = lower friction for any equal TUI client; bounded interactive wait preserved. Deliberately deferred from PR #131 as an architecture change beyond a UX wave; not a launch blocker.
 
 `[eng-choice]` — the choice between rewindable-step vs front-load is owner-gated architecture decision. `HYPO` until a design is chosen and landed.
 
@@ -109,6 +105,8 @@ source: mirabilis#132 L2 (agreed deferral from PR #131)
 
 WHAT: a form pushed mid-launch (config wizard, telegram, gh-auth) renders at huh's natural size until a `WindowSizeMsg` arrives; at very small viewports the overlay box clips content (a description line can push options off-screen). Normal/realistic sizes (>=50×20) render fully — verified. This is an edge, not a launch blocker, and is pre-existing behaviour shared by all overlay forms (not introduced by PR #131). `HYPO` (deferred, not yet coded).
 
+**PREMISE-REEVAL (arch-C, iter-mirabilis-135):** arch-C made all TUI instances equal clients; `serve` daemon decoupled. What changed for W10: the overlay sizing problem is a property of the TUI client process, not of the owner/secondary distinction. Equal terminals means every TUI client instance exhibits the same unsized-until-resize behaviour — the problem is neither removed nor narrowed; if anything it affects all equal clients uniformly. What is obsoleted: any framing that assumed only the owner's terminal had the overlay clipping risk — that asymmetry is gone. Core problem STANDS: `router.go` still does not forward `winW/winH` on `ScreenPush`; `formScreen` still only sizes on `tea.WindowSizeMsg`; fix approach (re-emit vs carry) is unchanged.
+
 State [home, tagged — not grounding]:
 - `router.go` — `router.Model.Update` on `bus.ScreenPush` calls `s.Init()` but does **not** forward the current window size to the freshly-pushed screen. `[home: tui/router/router.go, mirabilis#132-L2]`
 - `screens.go` — `formScreen.Update` calls `form.SetSize` only on `tea.WindowSizeMsg`; a pushed form is therefore unsized until the next terminal resize event. `[home: tui/app/screens.go, mirabilis#132-L2]`
@@ -116,7 +114,7 @@ State [home, tagged — not grounding]:
 HOW (Δ, eng-choice/HYPO — plan not landed):
 On `ScreenPush`, deliver the current `winW/winH` to the new screen — either (a) the app re-emits a `WindowSizeMsg` after a push, or (b) the push carries dimensions explicitly. The form sizes itself to the overlay's inner area. Satisfies the Adaptive Layout principle (`docs/tui-principles.md P1`). Small and contained.
 
-Mission frame: owner sees full form content at all tested viewports = fidelity of the interactive channel. Low enough blast-radius to be self-contained once prioritized. Explicitly deferred from PR #131.
+Mission frame: every equal TUI client sees full form content at all tested viewports = fidelity of the interactive channel. Low enough blast-radius to be self-contained once prioritized. Explicitly deferred from PR #131.
 
 `[eng-choice]` — exact delivery mechanism (re-emit vs carry) is owner/reviewer preference. `HYPO` until landed.
 

@@ -164,12 +164,12 @@ neuro-matrix#56   the parking-lot consolidation
 neuro-matrix#59   the protocol-path human-gate PR
 neuro-matrix#63   the R→S audit
 neuro-matrix#64–68 the eval-gate fixes (McNemar-tail, Cohen's-d, rater-aware-α, cross-family judge, vanilla baseline)
-neuro-matrix commit #133  "caveman" commit title
 mirabilis#114     paired sandbox-side issue
 
 interview-coach-skill   noamseg/interview-coach-skill ∈ mirabilis config/skills.txt:1 (catalog seed, not a scientific source)
 owner-memory / per-session logs → SCRATCH; do not store in Λ
 
-mirabilis-TUI-followups   → mirabilis#132 (W9 cross-cluster back-nav + W10 adaptive overlay form sizing; dept/graph-plan-sandbox.md §10-11; genome/registry-M.md work-item list; agreed deferrals from PR #131)
+mirabilis-TUI-followups   → mirabilis#132 (W9 cross-cluster back-nav + W10 adaptive overlay form sizing; deferred)
+mirabilis#135             W-arch-C + Phase-1 UX wave + caveman + headroom G4 + sandbox_context V2 + credential-authority (CI in-flight; NOT merged — owner gate)
 WSL2-canary (parked)      → mirabilis#121-L1 (docker-in-WSL2 E2E canary; vectors/bugs.md §Parked; trigger: date ≥ 2026-06-16)
 ```

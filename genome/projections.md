@@ -10,8 +10,8 @@ proj_o(𝒢) = ⟨V_o, E_o⟩,   o∈{M,N}
 ```
 
 ## Graph-M = proj_M (mechanism / coral)
-Vertices: M anatomy (`registry-M`: authproxy, harness, membackup, obs, config, exec, localllm, notify, pipeline, provision, sandbox, secrets, claudeauth, status, steps, hooksM, bus, tui) ⊕ work-item mutations (W1–W7 LANDED PR#134; W8/W9/W10 open) ⊕ M-invariants (INV-D/E/F) ⊕ M-alleles of the quartet.
-Deliverable projection: **landed code** — W1–W7 in mirabilis PR#134 (CONFLICT W1/[D5] RESOLVED: integration-only, no offload hook); open: W8/W9/W10.
+Vertices: M anatomy (`registry-M`: authproxy, harness, membackup, obs, config, exec, localllm, notify, pipeline, provision, sandbox, secrets, claudeauth, status, steps, hooksM, bus, tui, serve) ⊕ work-item mutations (W1–W7 landed; W-arch-C landed-pending PR#135; W8/W9/W10 open) ⊕ M-invariants (INV-D/E/F/I3) ⊕ M-alleles of the quartet.
+Deliverable projection: **landed code** — W1–W7 expressed as genes; W-arch-C in PR#135 (CI in-flight, NOT merged); open: W8/W9/W10. [HYPO for PR#135 items]
 
 ## Graph-N = proj_N (behaviour / seahorse)
 Vertices: `registry-N` (31 invariants, 5 agents, 5 skills, hooks, eval/R→S, scripts, references) ⊕ candidates INV-A/B/C ⊕ N-alleles of the quartet.
