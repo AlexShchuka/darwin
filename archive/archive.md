@@ -166,10 +166,10 @@ neuro-matrix#63   the R→S audit
 neuro-matrix#64–68 the eval-gate fixes (McNemar-tail, Cohen's-d, rater-aware-α, cross-family judge, vanilla baseline)
 mirabilis#114     paired sandbox-side issue
 
-interview-coach-skill   noamseg/interview-coach-skill ∈ mirabilis config/skills.txt:1 (catalog seed, not a scientific source)
+interview-coach-skill   REMOVED from mirabilis config/skills.txt (per #145; skills.txt is now stack-grouped — a `golang` group installed via `gh skill install`). Historical catalog seed, never a scientific source. [reconciled 2026-06-23]
 owner-memory / per-session logs → SCRATCH; do not store in Λ
 
 mirabilis-TUI-followups   → mirabilis#132 (W9 cross-cluster back-nav + W10 adaptive overlay form sizing; deferred)
-mirabilis#135             W-arch-C + Phase-1 UX wave + caveman + headroom G4 + sandbox_context V2 + credential-authority (CI in-flight; NOT merged — owner gate)
+mirabilis#135             W-arch-C + Phase-1 UX wave + caveman + headroom G4 + sandbox_context V2 + credential-authority (MERGED to main; +#136 reverted the attach-idempotency part — attach is now Handoff-exempt; verified 2026-06-23)
 WSL2-canary (parked)      → mirabilis#121-L1 (docker-in-WSL2 E2E canary; vectors/bugs.md §Parked; trigger: date ≥ 2026-06-16)
 ```
