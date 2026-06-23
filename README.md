@@ -46,7 +46,8 @@ GENOME.md                  CORE: §A carriers/𝕌_local · §A.1 completeness �
 genome/registry-M.md       𝒢|M coral genes (sandbox anatomy + work-items + INV-D/E/F)
 genome/registry-N.md       𝒢|N seahorse genes (invariants + agents + skills + hooks + eval + scripts + refs)
 genome/registry-new.md     𝒢|+ new genes (know/fleet/obs+/domain) + channel genes (sci/web/code)
-genome/projections.md      proj_M / proj_N : two graphs from one 𝒢
+genome/projections.md      proj_M / proj_N : two graphs from one 𝒢 + ecosystem-graph (4 repos)
+genome/mission.md          owner vision: raid-target (T1/T2/T3) + owner–AI generation loop [HYPO/ASSOC]
 genome/mined-invariants.md candidate invariants from the memory dump (CI-1..14 + comms primitives)
 genome/design-principles.md design principles G0–G12 (sandbox/engineering; home for all Gn references)
 archive/archive.md         Λ external sources by department (dedup; upstream research-anchors.md)
