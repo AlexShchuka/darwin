@@ -79,12 +79,68 @@ sanitize-overstrip    [HYPO, low-prob] broadened regex could strip a literal `<w
 
 §ledger: FACT — dependabot-blindspot mirrors mirabilis AGENTS.md. ASSOC — Vec placement. HYPO — regex over-strip. transient — discard each when closed.
 
+## §Mac — fresh-Mac install blockers [HYPO — reasoned from code + vendor docs; no real macOS run; source: 2026-06-23 audit vs mirabilis origin/main HEAD 5e9d33b]
+
+Critical path: `install.sh darwin` → `make bootstrap/install` → `mirabilis` TUI Launch → container + Claude boot.
+All blockers below are HYPO (not empirically run on macOS; anchored to code path + Docker/Homebrew docs; `empirically_verified` noted per item).
+
+```
+Mac-B1  Docker Desktop first-run GUI license [HIGH — empirically_verified: false]
+         Daemon will not start until the Subscription Service Agreement is accepted (GUI modal or
+         `--accept-license` to the install binary). `make bootstrap` only `brew bundle`-installs the cask;
+         nothing runs `/Applications/Docker.app/Contents/MacOS/install --accept-license`.
+         On a fresh Mac, preflight `open -a Docker` + 30x2s poll times out → Launch fails.
+         fix: add `sudo /Applications/Docker.app/Contents/MacOS/install --accept-license` to bootstrap
+              after `brew bundle`, then `open -a Docker`; at minimum name the dialog in preflight
+              timeout message (κ:internal/engine/steps/preflight.go).
+         evidence: Brewfile = `cask "docker-desktop"` only; repo grep accept-license = 0 hits.
+
+Mac-B2  curl|bash sudo-prompt hang [HIGH — empirically_verified: false]
+         README quick-start `curl -fsSL .../install.sh | bash` runs `brew bundle` of docker-desktop cask.
+         The cask's privileged linking step prompts for sudo; in a non-TTY piped context (CI / curl-pipe)
+         the prompt may hang until SIGINT. `sudo -v` pre-auth and `/dev/tty` handling are absent in repo.
+         fix: instruct owner to run from a real terminal (`bash -c "$(curl -fsSL ...)"`, not pipe);
+              add `sudo -v` keep-alive before `brew bundle`; split bootstrap into an interactive step.
+         evidence: README.md quick-start = `| bash`; install.sh has no sudo -v / NONINTERACTIVE.
+
+Mac-B3  host `claude setup-token` PATH gap [MED — empirically_verified: false]
+         If `mirabilis` is run in the SAME shell as the installer, `~/.local/bin` is not yet on PATH
+         (rc edits not sourced). claudeAuthStep execs `claude setup-token` via PTY using LookPath against
+         inherited PATH; no ~/.local/bin augmentation in Go. install.sh only warns (no re-source/re-exec).
+         fix: install.sh prepend ~/.local/bin to PATH before printing "run: mirabilis", or tell owner to
+              open a new terminal.
+         evidence: internal/tui/app/handlers_pipeline.go → exec LookPath on inherited PATH; install.sh
+                   warn only, no re-source.
+
+Mac-B4  settings-env pins :8787 when Optional headroom skips [MED — empirically_verified: false]
+         headroom is Optional (stateSkipped on pip failure); failedDep blocks only on stateFailed — so
+         settingsEnvStep (Deps:[headroom]) still runs and pins ANTHROPIC_BASE_URL=:8787 unconditionally.
+         SessionStart ensureProxyForSession early-returns if upstream file absent (never written on skip) →
+         no self-heal. Claude is wired to a dead :8787, cannot reach Anthropic until re-provision.
+         fix: settings-env falls back to host authproxy URL when :8787 unreachable, OR promote headroom to
+              non-optional, OR Check :8787 reachability before pinning.
+         evidence: internal/engine/provision/headroom.go:Optional=true; pipeline.go cascade-skip; settingsenv.go
+                   unconditional base-URL write; session.go early-return on missing upstream file.
+
+Mac-B5  keychain entry name doc/invariant mismatch [LOW — empirically_verified: true]
+         Code: tokenKey="claude-token" (source.go) → entryName="mirabilis-claude-token" (keychain.go).
+         Docs (SECURITY.md + AGENTS.md) say "mirabilis-claude"; AGENTS.md invariant "no doubled suffix".
+         Functionally harmless (set/get symmetric on the same name) but docs point at a nonexistent entry.
+         fix: change tokenKey="claude" (+one-time migration) OR correct SECURITY.md/AGENTS.md to
+              "mirabilis-claude-token".
+         evidence: source.go tokenKey literal + keychain.go entryName construction — directly verified.
+```
+
+§Mac-verdict [HYPO]: the scripted path is architecturally complete and the in-container auth chain is sound (token never enters container, onboarding belt, SessionStart hook, raid-default harness). But "fresh Mac → just works, zero manual steps" is false on first launch for B1+B2 (Docker license + brew-sudo TTY) AND the first launch always requires two interactive sign-ins (Anthropic setup-token + GitHub device flow) — repeat launches ARE zero-question. B4 is a verified code-path break (not macOS-specific). B5 is cosmetic. None of B1–B3 could be run here (no macOS/Docker/brew).
+
 ## §I — Ledger (this entry)
 ```
 FACT  : the eval-gate fixes are MERGED to main (#64/#65/#66/#67/#68, verified 2026-06-23 on origin/main); each fix verified vs the named non-LLM ground truth + golden-tested to fail on the old behaviour; eval-power N=17 stated in the vanilla-baseline-arm comment.
 FACT/conflict : N7 stack-coverage — ROADMAP.md:25 status=shipped vs verification-gate.sh sh/py/json only — VERIFIED on origin/main: the code IS sh/py/json only, so the conflict is real and N7 is open (ROADMAP's "shipped" is aspirational). Upgraded from "unverifiable-here" to verified-open 2026-06-23.
+FACT  : Mac-B5 keychain mismatch verified directly from source.go + keychain.go + docs (2026-06-23 audit).
 ASSOC : the cited references (scipy/statsmodels, CRAN effectsize/exact2x2, arXiv:2506.07962, Munafò&Davey-Smith) — cited BY the thread; the mapping of N7→V4 and eval-power→V1 is to theory-of-everything.md §6 (same source, the R→S audit).
+HYPO  : Mac-B1/B2/B3/B4 — reasoned from code path + Docker/Homebrew docs; no macOS/Docker/brew run possible (Linux container). Mac-B4 code path deterministic but trigger is environmental.
 HYPO  : that the deferred live A/B run will show the harness helps — explicitly OPEN (the whole reason V1 is the binding constraint); whether N7-real + larger-N suffice to detect the effect.
 Q     : the exact unsaturated benchmark to anchor the A/B (theory-of-everything.md §7 Q4). Live A/B RUN status (verified 2026-06-23): NOT done — no published results/CSV committed to neuro-matrix; a dev-time live run is referenced in statistical_test.py:187 ("live run 2026-06-11: 4 regressions...") but no merge-verdict A/B is published ⇒ "built + landed, not run" stands.
-transient : entry — once the eval-gate fixes are implemented, discard; the live run + N7 + eval-power are the open work. Discarding v-bugs does not force a rebuild of GENOME.
+transient : entry — once the eval-gate fixes are implemented, discard; the live run + N7 + eval-power are the open work. §Mac blockers: discard each entry when the fix is verified on a real Mac and landed. Discarding v-bugs does not force a rebuild of GENOME.
 ```

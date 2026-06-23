@@ -11,21 +11,22 @@ G-harness    FACT  α_M: install-actions + probe-scripts; installs harness N INT
                         →M↔N coupling: expresses N into env(M)  κ:engine/harness/harness.go   [wiring gene: mechanical install, ¬asymmetric life-dependence (§A.6/§F)]
 G-membackup  FACT  α_M: syncs ~/.claude memory container→host-repo (Save)  →knowledge persistence  κ:engine/membackup/membackup.go   [allele of G-know]
 G-obs        FACT  α_M: thread-safe observable state-map of subsystem health + slog single sink  →observability(G5)  κ:internal/obs/obs.go   [allele of G-obs+]
-G-config     FACT  α_M: G4 tunables (LocalLLM*, Sock…, HEADROOM_MODE config-gated)  κ:engine/config/config.go
+G-config     FACT  α_M: G4 tunables (LocalLLM*, Sock…, HEADROOM_MODE config-gated; Loadout type + DefaultLoadout="raid" + ReadLoadout/ReadLoadoutManifest)  κ:internal/engine/config/config.go
 G-exec       FACT  α_M: Runner port — sole os/exec home (forbidigo)  κ:engine/exec
 G-localllm   FACT  α_M: bridge + local-offload MCP  κ:engine/localllm   [= quartet G-loc]
-G-notify     FACT  α_M: telegram delivery (watcher, status)  κ:engine/notify
+G-loadout    FACT  α_M: activity-loadout selection — LOADOUT env (raid/pvp/grind) selects plugins, MCP servers, harness toggle, effortLevel; mirrors the stacks mechanism; κ:config/loadouts/{raid,pvp,grind}.txt + internal/engine/provision/carry.go (loadoutStep, effortStep) + internal/engine/provision/mcp.go (loadout filter) + internal/engine/provision/settings.go (effortLevel write); raid=full+harness+max, pvp=lean+no-gates+max, grind=minimal+no-gates+xhigh  [FACT — PR#150 merged to main; verified config/loadouts/ listing + internal/engine/config/config.go DefaultLoadout="raid"]
+G-notify     FACT  α_M: telegram runtime delivery (watcher, status; NOT in launch pipeline — telegram removed from launch/onboarding in PR#150; runtime notify infra kept)  κ:engine/notify
 G-pipeline   FACT  α_M: provision DAG (failedDep, stateSkipped, emit)  κ:engine/pipeline
 G-provision  FACT  α_M: provision steps (rtk, headroom, settingsenv, localllm, carry)  κ:engine/provision
 G-sandbox    FACT  α_M: docker / vscode / attach / host-IO (OpenVSCode); SystemPromptFile FOL-rendered from config.go single-source  κ:engine/sandbox
 G-secrets    FACT  α_M: FileStore(Linux)/keychain(macOS); .mirabilis-* tokens  κ:engine/secrets
 G-claudeauth FACT  α_M: claude auth chain  κ:engine/claudeauth   [role ASSOC]
 G-status     FACT  α_M: provision status  κ:engine/status   [role ASSOC]
-G-steps      FACT  α_M: pipeline steps (telegram, ghauth, launch, attach)  κ:engine/steps
+G-steps      FACT  α_M: pipeline steps (ghauth, launch, attach; telegram step REMOVED from launch in PR#150)  κ:engine/steps
 G-hooksM     FACT  α_M: session hooks — RTK/headroom/session-start/credential-authority  κ:internal/hooks
-              sub-gene: credential-authority — gh auth setup-git in SessionStart (idempotent, best-effort; sandbox owns git-credential independent of side VS Code attach) [FACT — PR#135 merged to main; κ:internal/hooks/session.go runs `gh auth setup-git` in SessionStart]
-G-bus        FACT  α_M: event bus (tui msgs)  κ:internal/bus
-G-tui        FACT  α_M: TUI (app/screens/router/strings/styles/components/frame/a11y)  κ:internal/tui
+              sub-gene: credential-authority — github.com credential chain self-healed to gh-ONLY (empty-reset + gh two-entry via --replace-all/--add for github.com and gist) in SessionStart (ensureGHCredentialAuthority); VS-Code-independent; fixes private-repo invisibility; surfaces failure as [hook] WARN, not abort. [FACT — PR#151 merged to main; supersedes PR#135 "gh auth setup-git best-effort"; κ:internal/hooks/session.go]
+G-bus        FACT  α_M: event bus (tui msgs; bus.ChromeTick REMOVED in PR#152 — animation now via frame.SetChrome)  κ:internal/bus
+G-tui        FACT  α_M: TUI (app/screens/router/strings/styles/components/frame/a11y); large logo moved into frame header + TitleBanner ASCII; LogoSmall/smallGlyph DELETED; chromePeriod 200ms (halved from 100ms); LogoLargeFrameE 7-col (was 6); animation via SetChrome not ChromeTick. [PR#152: κ:internal/tui]
 G-serve      FACT  α_M: sub-gene of G-sandbox/G-authproxy; single-instance proxy+notify daemon  κ:cmd/mirabilis/serve.go
               serve lifecycle: `mirabilis serve` runs proxy+notify detached, flock-guarded (single-instance);
               TUI writes pidfile to .mirabilis/clients/<pid>.pid on startup, removes on exit;
@@ -66,7 +67,12 @@ W-arch-C LANDED — mirabilis PR#135 merged to main (+ #136 follow-up); origin/m
   headroom HEADROOM_MODE config-gated G4                                                        → G-hed,G-config
   sandbox_context V2: FOL-rendered from config.go single-source, sandbox-context.md deleted    → G-sandbox,G-hooksM
   credential-authority: gh auth setup-git in SessionStart (idempotent, best-effort)            → G-hooksM
-  post-#135 organ work NOT yet in genome (flagged, see PR "needs owner decision"): #138 caveman-shrink MCP organ + gate-free launch; #140 Telegram removed as standalone menu item; #145 provision split into fixed installer/config sub-packages + skills-as-groups via `gh skill install`; #147 provision→template-driven refactor PLAN (doc-only)
+  post-#135 organ work (#138 caveman-shrink, #140 Telegram menu, #145 installer modules, #147 template-plan) now LANDED — expressed below
+
+W-post-arch LANDED — mirabilis PRs #150/#151/#152 merged to main (verified origin/main HEAD 5e9d33b, 2026-06-23):
+  #150 activity loadouts (raid/pvp/grind); telegram REMOVED from launch pipeline + onboarding + TUI screen    → G-loadout,G-config,G-steps,G-notify,G-tui
+  #151 credential-authority self-heal: gh-only chain (empty-reset + gh two-entry), VS-Code-independent        → G-hooksM (credential-authority sub-gene revised)
+  #152 TUI header: large logo → frame header + TitleBanner ASCII; LogoSmall/ChromeTick deleted; chromePeriod 200ms; LogoLargeFrameE 7-col  → G-tui,G-bus
 
 OPEN plan:
   W8 SearXNG websearch (new gene)        → G-websearch,G-config,compose
@@ -84,8 +90,9 @@ INV-G13 map+doctrine ¬prose-inject  home: engine/sandbox — SystemPromptFile F
 ```
 
 ## Ledger
-FACT: all packages exist (listing) + package-doc read for authproxy/harness/membackup/obs/localllm. caveman ∈ M wired via plugin catalog (PR#135 MERGED to main; was catalog-only skill before). ASSOC: role of claudeauth/status (name-only).
+FACT: all packages exist (listing) + package-doc read for authproxy/harness/membackup/obs/localllm. caveman ∈ M wired via plugin catalog (PR#135 MERGED to main; was catalog-only skill before). G-loadout FACT — config/loadouts/{raid,pvp,grind}.txt listing + config.go DefaultLoadout + carry.go loadoutStep verified on origin/main (HEAD 5e9d33b, 2026-06-23). G-hooksM credential-authority sub-gene updated to PR#151 self-heal (ensureGHCredentialAuthority gh-only chain). G-tui header/logo updated to PR#152 (frame header + TitleBanner, LogoSmall deleted, ChromeTick removed, SetChrome animation). G-steps telegram-step: REMOVED from launch (PR#150 verified — no telegram step in steps.go Launch()). G-notify telegram runtime infra: still present (watcher/status, κ:engine/notify). ASSOC: role of claudeauth/status (name-only).
 CONFLICT-1 RESOLVED: W1 landed integration-only — NO auto-offload hook (D5/D6 honored); caveman↔localLLM stay distinct alleles (§H quartet, channel-disjoint).
 CONFLICT-2 RESOLVED [#30]: the owner approved the config-driven design-reversal; the localllm constants are now env-overridable with the prior hardcoded values as defaults, and SanitizeOutput crosses the model-output trust boundary.
-W-arch-C LANDED [was HYPO-pending; reconciled 2026-06-23]: G-serve, credential-authority, caveman wiring, headroom G4 knob, sandbox_context V2 all verified on mirabilis origin/main (PR#135 merged; HEAD #148). Status = FACT. ONE reversal: INV-I3 attach-idempotency — PR#135's "Check idempotent" was reverted by #136 (attach is now Handoff-exempt). Post-#135 organ additions (#138/#140/#145/#147) are NOT yet expressed as genes — flagged for owner.
+W-arch-C LANDED [was HYPO-pending; reconciled 2026-06-23]: G-serve, credential-authority, caveman wiring, headroom G4 knob, sandbox_context V2 all verified on mirabilis origin/main (PR#135 merged; HEAD #148). Status = FACT. ONE reversal: INV-I3 attach-idempotency — PR#135's "Check idempotent" was reverted by #136 (attach is now Handoff-exempt).
+W-post-arch LANDED [reconciled 2026-06-23]: PRs #150/#151/#152 verified on origin/main HEAD 5e9d33b. G-loadout new gene; G-hooksM credential-authority upgraded to self-heal; G-tui header redesign; G-steps telegram removed from launch; G-notify runtime infra kept; G-config Loadout type added.
 ROT-HYGIENE (this iter): volatile `:line` suffixes stripped from κ package-homes (the package is the home; the line rots — §B). PR-status provenance stripped from work-item descriptions (history in git, not genome — §A.4). plan-homes in DEPT plans are file-actionable by design; plan-line-homes left as-is (owner call).
