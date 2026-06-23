@@ -100,7 +100,7 @@ SCRATCH outside Γ : session-dumps, drafts, critic-findings — short-lived, exp
 Strata order = R7 applied to Γ (see §A.4). Law [R6]: Γ stores the COMPRESSED state + open work, never raw run-status / per-session logs / code-churn (those rot). Λ = scientific sources only (ref + claim + lastVerified), deduped.
 
 ## §H — Registry
-- BODY: `genome/registry-{M,N,new}.md` · `projections.md` · `mined-invariants.md` · `design-principles.md` (G0–G12) · `archive/archive.md` (Λ).
+- BODY: `genome/registry-{M,N,new}.md` · `projections.md` · `mission.md` · `mined-invariants.md` · `design-principles.md` (G0–G12) · `archive/archive.md` (Λ).
 - DEPT: `dept/theory-of-everything.md` · `dept/graph-plan-{harness,sandbox,communication}.md`.
 - Vec: `vectors/{vectors,bugs,idea-exchange}.md`.
 
