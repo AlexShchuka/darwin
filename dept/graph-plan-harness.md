@@ -24,20 +24,20 @@ Priority order: V1 (close R→S) ≻ {INV-A/B/C, the interference anti-genes INV
 ```
 V1 : the RUN — vanilla arm vs external UNSATURATED benchmark, cross-family second judge
 κ : eval/ (live) :  run_suite.py · statistical_test.py · test_vanilla_arm.py · test_second_judge.py · criteria.md · questions/ · adversarial/
-issues : the eval-gate fixes  gate-fix = FACT (`statistical_test.py:196` upper-tail McNemar, `:265-267` rater-aware α — readable snapshot) ; issue MERGE-status = agent-reported (gh unverifiable here)
+issues : the eval-gate fixes  gate-fix = FACT (`statistical_test.py:196` upper-tail McNemar, `:265-267` rater-aware α) ; MERGE-status = MERGED to main (verified 2026-06-23 on origin/main: #64/#65/#66/#67/#68). The open step is the RUN, not the gate.
 ```
 
 ### 1.1 — State: the GATE is fixed (FACT, snapshot code); the missing step is the RUN  [pivotal]
 
-Gate-fix is FACT — anchored to readable snapshot code, NOT to an issue tracker: `statistical_test.py:196` (McNemar upper tail `range(regressions, n+1)`) + `:265-267` (rater-aware Krippendorff α, a rater's k runs aggregated→one rating). The per-issue MERGE-status below is **agent-reported** (GitHub unverifiable here):
-- `the McNemar-tail fix [agent-reported MERGED]` — inverted McNemar tail corrected (gate-fix = FACT `statistical_test.py:196`; the central finding of the R→S audit §3).
-- `the Cohen’s-d edge fix [agent-reported MERGED]` — zero-variance paired diffs = infinite effect size, not zero (Cohen's d edge).
-- `the rater-aware-α fix [agent-reported MERGED]` — Krippendorff α made rater-aware (gate-fix = FACT `statistical_test.py:265-267`; runs were masquerading as raters).
-- `the cross-family second judge [agent-reported MERGED]` — cross-family second judge via GitHub Models (`models:read`, free) — the disjoint second channel.
-- `the vanilla baseline arm [agent-reported MERGED]` — vanilla / no-plugin baseline arm.
-- `eval/` now contains `test_vanilla_arm.py` + `test_second_judge.py` + `run_suite.py` + `statistical_test.py` [FACT, contents listed] ⇒ the gate is **built** (code readable here).
+Gate-fix is FACT — anchored to readable code: `statistical_test.py:196` (McNemar upper tail `range(regressions, n+1)`) + `:265-267` (rater-aware Krippendorff α, a rater's k runs aggregated→one rating). The per-issue MERGE-status below is now **verified MERGED to main** (origin/main, 2026-06-23; was agent-reported in darwin's PR#135 snapshot):
+- `the McNemar-tail fix [MERGED #64]` — inverted McNemar tail corrected (gate-fix = FACT `statistical_test.py:196`; the central finding of the R→S audit §3).
+- `the Cohen’s-d edge fix [MERGED #65]` — zero-variance paired diffs = infinite effect size, not zero (Cohen's d edge).
+- `the rater-aware-α fix [MERGED #66]` — Krippendorff α made rater-aware (gate-fix = FACT `statistical_test.py:265-267`; runs were masquerading as raters).
+- `the cross-family second judge [MERGED #67]` — cross-family second judge via GitHub Models (`models:read`, free) — the disjoint second channel.
+- `the vanilla baseline arm [MERGED #68]` — vanilla / no-plugin baseline arm.
+- `eval/` now contains `test_vanilla_arm.py` + `test_second_judge.py` + `run_suite.py` + `statistical_test.py` [FACT, contents listed] ⇒ the gate is **built and landed**.
 
-∴ the genome statements "the eval gate is already fixed" and registry-N:3 are **TRUE against the readable snapshot code** [FACT: `statistical_test.py:196`,`:265-267`]; the *merge* into main is agent-reported. The `R→S` machinery (`E`) is correct and present in the snapshot.
+∴ the genome statements "the eval gate is already fixed" and registry-N:3 are **TRUE and the fixes are MERGED to main** [verified origin/main: #64/#65/#66/#67/#68]. The `R→S` machinery (`E`) is correct and landed.
 
 The remaining binding step is therefore **not the gate logic** — it is the **RUN**: execute the suite as a real measurement (`R` actually feeds `E`, `E` actually selects `S`). Per `eval/README.md` [FACT]: "minimum threshold for merge is no question regresses"; the suite is small (17 = 11 adversarial + 6 questions), 18 binary criteria; validity caveat names same-model convergence → the cross-family judge (the cross-family second judge) is what lifts it. Status (the R→S audit §1 ladder): the inferential layer was L1; the eval-gate fixes lift its *correctness*; the RUN lifts it to a *used* signal. Until a run is executed against an **external unsaturated** anchor, `N` is, in the R→S audit's words, "buildable, not run" (registry-N:57) ⇒ still drift.
 
@@ -183,7 +183,7 @@ Mission frame: the deepest evolvability lever — the system can *answer questio
 
 ## 5 — What is NOT a Δ here (anti-scope, invariant #3)
 
-- Re-fixing the gate: the gate-fix is present in the snapshot code (`statistical_test.py:196`,`:265-267` = FACT; the eval-gate fixes merge-status = agent-reported). Do **not** re-open the inversion as if unfixed (harness-improve Stage 1: a recorded decision must be quoted, re-open needs *new* evidence). The drift diagnosis now rests on *not-yet-run*, not *broken-gate*.
+- Re-fixing the gate: the gate-fix is present AND merged (`statistical_test.py:196`,`:265-267` = FACT; eval-gate fixes #64/#65/#66/#67/#68 MERGED to main, verified 2026-06-23). Do **not** re-open the inversion as if unfixed (harness-improve Stage 1: a recorded decision must be quoted, re-open needs *new* evidence). The drift diagnosis now rests on *not-yet-run*, not *broken-gate*.
 - README claim-lowering (V2), token instrumentation (V3), channel-independence (V4), dogfood-gates-on-docs (V5) are real vectors from the R→S audit but **out of this file's mandated scope** (owner named V1 / INV-A·B·C / V6 / V7). They sit below V1 and are selectable only after R→S closes; record as ROADMAP candidates (harness-improve Stage 0 fallback).
 
 ---
@@ -192,8 +192,8 @@ Mission frame: the deepest evolvability lever — the system can *answer questio
 
 ```
 FACT (issue/PR/file) :
-  eval gate fixed = FACT, anchored to readable snapshot code: `statistical_test.py:196` (McNemar upper tail) + `:265-267` (rater-aware Krippendorff α)
-  the eval-gate fixes' issue MERGE-status = agent-reported (GitHub unverifiable here, not gh-verified)
+  eval gate fixed = FACT, anchored to readable code: `statistical_test.py:196` (McNemar upper tail) + `:265-267` (rater-aware Krippendorff α)
+  the eval-gate fixes are MERGED to main: #64 McNemar, #65 Cohen's-d, #66 rater-α, #67 cross-family judge, #68 vanilla arm (verified 2026-06-23 on origin/main; was "agent-reported / unverifiable" in darwin's PR#135 snapshot)
   eval/ contains run_suite.py, statistical_test.py, test_vanilla_arm.py, test_second_judge.py, criteria.md, questions/, adversarial/
   invariants.txt = 31 invariants, stable-id format (live read) ; INV-A/B/C ∉ it
   skills/harness-improve/SKILL.md = the landing channel (Stage 0–4, class→gate table, critic + human-token gates) [live read]

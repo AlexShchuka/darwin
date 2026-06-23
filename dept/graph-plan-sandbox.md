@@ -8,7 +8,7 @@ Mission-frame (INV-A; do not justify a Δ by "saves tokens"): the ecosystem goal
 
 **LANDED (expressed in registry-M):** W1–W7 + off-plan onboarding/trust/theme suppression + copy-feedback honesty. INV-D/E/F landed.
 
-**LANDED-PENDING PR#135 (CI in-flight; NOT merged to main):** W-arch-C (serve lifecycle, all-TUI-equal, applySecondary removed, attachStep.Check I3) · UX bug-wave (telegram three-state, provision statusbar, header+logo, spinner) · caveman marketplace activation · headroom HEADROOM_MODE G4 knob · sandbox_context V2 (FOL from config.go, sandbox-context.md deleted) · credential-authority in session-hook. [HYPO until merged]
+**LANDED PR#135 (merged to main; origin/main HEAD #148 as of 2026-06-23):** W-arch-C (serve lifecycle, all-TUI-equal, applySecondary removed) · UX bug-wave (telegram three-state, provision statusbar, header+logo, spinner) · caveman marketplace activation · headroom HEADROOM_MODE G4 knob · sandbox_context V2 (FOL from config.go, sandbox-context.md deleted) · credential-authority in session-hook. [FACT — verified on mirabilis origin/main]. CORRECTION: attachStep.Check is NOT idempotent — PR#135's I3 "fix" was reverted by #136; attach is now `Kind=Handoff` (Check constant-false), I3 contract exempts Handoff (see §M invariant-genes + PR "needs owner decision").
 
 The plan below = the remaining OPEN work only.
 
@@ -16,14 +16,14 @@ The plan below = the remaining OPEN work only.
 
 ## 0 — Ordering by leverage
 
-Order: G-cav ≻ W8 ≻ W9 ≻ W10. Rationale:
-- `G-cav` first: a **standing catalog entry already exists** yet there is **no provision step + no session-flag wiring** (HYPO; §1) ⇒ adopting AS-IS is the cheapest mission-positive Δ (self-sufficiency of the dialogue channel).
-- `W8` (SearXNG) = a new channel gene `G-web` materializing access to `𝕌` → capability-across-domains; larger surface (new package + compose), so below the in-place Δ.
+Order: W8 ≻ W9 ≻ W10 (G-cav DONE — landed in PR#135, see §1). Rationale:
+- `G-cav` is no longer open work: it is wired (marketplace+install via pluginsStep) and merged to main (PR#135). Kept in §1 as the landed reference, removed from the open queue.
+- `W8` (SearXNG) = a new channel gene `G-web` materializing access to `𝕌` → capability-across-domains; larger surface (new package + compose); the next open Δ.
 - `W9`/`W10`: deferred UX architecture (mirabilis#132), eng-choice/HYPO; below W8.
 
 ---
 
-## 1 — G-cav (caveman) — WIRED (marketplace+install)  [HYPO landed-pending PR#135]
+## 1 — G-cav (caveman) — WIRED (marketplace+install)  [FACT — PR#135 merged to main]
 
 ```
 gene G-cav : α_M = marketplace+install via pluginsStep ; α_N = terse skill (projections.md)
@@ -33,7 +33,7 @@ mechanism(caveman) [FACT, README + INSTALL.md viewed] :
   ⊕ opt-in MCP "caveman-shrink" (--with-mcp-shrink)        cuts ~75% output tokens, "brain big, mouth small"
 ```
 
-State (post-PR#135, HYPO): caveman wired via plugin catalog — `JuliusBrussee/caveman` in `marketplaces.txt`, `caveman@caveman` in `plugins.txt`; dead `juliusbrussee/caveman` git-clone removed from `skills.txt`; `pluginsStep` installs it via `claude plugin marketplace add` + `claude plugin install caveman@caveman --scope user` (canonical path per official repo `bin/install.js`). Smoke test updated: plugin catalog + marketplace assertions replace the old skills-catalog assertion.
+State (PR#135 merged to main — FACT, verified on mirabilis origin/main): caveman wired via plugin catalog — `JuliusBrussee/caveman` in `config/marketplaces.txt`, `caveman@caveman` in `config/plugins.txt`; dead git-clone removed from `skills.txt` (skills.txt is now stack-grouped, installed via `gh skill install`); `pluginsStep` installs caveman each provision. NOTE: a later organ PR (#138) added a separate caveman-shrink MCP organ (`engine/provision/cavshrink.go`, `npx caveman-shrink --with-mcp-shrink`) — NOT yet expressed as a gene; flagged in PR "needs owner decision".
 
 Channel-disjointness holds [FACT]: caveman = **agent-out** window; RTK = tool-out; headroom = API-window; localLLM = offload. ⇒ ¬duplication.
 
@@ -137,8 +137,8 @@ FACT (file:line / repo / issue):
   W1–W7 + off-plan onboarding/copy-honesty LANDED mirabilis PR#134 (CI 9/9); pruned from this plan, expressed in registry-M.
 ASSOC:
   leverage ordering (mission-reach × organ-Δ / cost) = owner-lens application of G0
-HYPO:
-  G-cav not-wired (catalog-only; no per-tool provision step / session-flag)
+FACT (reconciled 2026-06-23):
+  G-cav WIRED + merged (PR#135): caveman@caveman in config/plugins.txt, JuliusBrussee/caveman in config/marketplaces.txt, pluginsStep installs each provision. The prior "not-wired (catalog-only)" HYPO is RESOLVED.
 Q:
   pin caveman by release/SHA? (no SHA-pin path for marketplace skills today)
 ```

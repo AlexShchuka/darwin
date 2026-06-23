@@ -1,6 +1,6 @@
 # 𝒢|N — genes of the seahorse (neuro-matrix, behaviour phenotype)
 
-Anchor: live `AlexShchuka/neuro-matrix` (¬ stale-plugin 0.1.0) + the R→S audit. genes grouped by family; schema §B GENOME. default `α_M=⊥` (behaviour ≠ mechanism), `δ`=executed/sampled by hook, `φ`=eval loop (R→S). binding-constraint: `R→S` open (the R→S audit §3); gate fixed = FACT (`eval/statistical_test.py:196` McNemar upper tail, `:265-267` rater-aware Krippendorff α) but the merge-status of the eval-gate fixes is agent-reported (unverifiable here) ⇒ ΔN=drift until φ selects.
+Anchor: live `AlexShchuka/neuro-matrix` (¬ stale-plugin 0.1.0) + the R→S audit. genes grouped by family; schema §B GENOME. default `α_M=⊥` (behaviour ≠ mechanism), `δ`=executed/sampled by hook, `φ`=eval loop (R→S). binding-constraint: `R→S` open (the R→S audit §3); gate fixed = FACT (`eval/statistical_test.py:196` McNemar upper tail, `:265-267` rater-aware Krippendorff α) and the eval-gate fixes are MERGED to main (verified 2026-06-23 on origin/main: #64 McNemar, #65 Cohen's-d, #66 rater-α, #67 cross-family judge, #68 vanilla arm) ⇒ gate is correct AND landed; but the suite is still not RUN as a published A/B (no results committed) ⇒ ΔN=drift until φ actually selects (the RUN, not the gate, is the open step).
 
 ## G|inv — invariants (31; `invariants.txt`) · τ=FACT (existence in invariants.txt) / see per-row grounding
 `α_N`=deontic rule · `α_M`=mechanical home where one exists (plan node 50) · `δ`=risk-weighted sample `random-invariant.sh` (crit×3/imp×2/style×1) · `φ`=eval probes · `κ`=`invariants.txt#N` [home only — §B: validity comes from grounding (Λ/§0), not from home]
@@ -69,19 +69,20 @@ adversarial-review · agent-fleet-orchestration (↔ gene G-fleet) · harness-im
 ```
 SessionStart       : mcp-health-check
 UserPromptSubmit   : random-invariant · self-review-preflight · trail-interrupt
-PreToolUse         : cycle-detector(Bash|Edit|Write…) · verification-gate(Bash) · auto-critic(Bash)
+PreToolUse         : cycle-detector(Bash|Edit|Write…) · verification-gate(Bash) · auto-critic(Bash) · skill-consult-check(Agent)
 PostToolUseFailure : trail-enrich
 ```
 biallelic: install in M (plugin into sandbox) ⊕ runtime gate in N.
+[reconciled 2026-06-23: skill-consult-check on the Agent matcher is NEW — landed via #71 (N10: skill-consult nudge before agent spawns); verified in hooks.json on origin/main.]
 
 ## G|eval — the R→S organ · τ=FACT · κ:`eval/`
-run_suite · statistical_test (McNemar-tail fix / Cohen's-d edge fix / rater-aware Krippendorff α) · cross-family second judge (GitHub Models) · vanilla baseline arm (no-plugin). **φ-source of the whole genome.** STATUS (the R→S audit): gate-fixed = FACT (`statistical_test.py:196` upper-tail McNemar, `:265-267` rater-aware α — readable snapshot); the merge-status of the eval-gate fixes is agent-reported (unverifiable here); run deferred ⇒ "buildable, not run". `δ`=eval-CI / workflow_dispatch.
+run_suite · statistical_test (McNemar-tail fix / Cohen's-d edge fix / rater-aware Krippendorff α) · cross-family second judge (GitHub Models) · vanilla baseline arm (no-plugin). **φ-source of the whole genome.** STATUS (reconciled 2026-06-23): gate-fixed = FACT (`statistical_test.py:196` upper-tail McNemar, `:265-267` rater-aware α) AND the eval-gate fixes are MERGED to main (verified on origin/main: #64/#65/#66/#67/#68); run still deferred (no published A/B results committed) ⇒ "built + landed, not run". `δ`=eval-CI / workflow_dispatch.
 
-## G|script — ≈17 · τ=FACT · κ:`scripts/`
-random-invariant · role-invariants · cycle-detector · verification-gate · auto-critic · self-review-preflight · trail-interrupt/enrich · check-canary-leak · check-eval-probes · check_common_code · protocol-paths · mcp-health-check · selftests. L2 deterministic machinery (the R→S audit).
+## G|script — 18 · τ=FACT · κ:`scripts/`
+random-invariant · role-invariants · cycle-detector · verification-gate · auto-critic · self-review-preflight · trail-interrupt/enrich · check-canary-leak · check-eval-probes · check_common_code · protocol-paths · mcp-health-check · skill-consult-check (NEW, N10/#71) · selftests (incl. selftest_skill-consult). L2 deterministic machinery (the R→S audit). [was "≈17"; now 18 — reconciled 2026-06-23 vs origin/main]
 
 ## G|ref — τ=FACT · κ:`references/`
 protocol/{format,co-system,cross-cutting} · ADR-003-common-code-v3 · research-anchors.md (→ upstream of Λ) · per-stack/.
 
 ## Ledger
-FACT: 31 invariants + 5 agents + 5 skills + hooks read live; eval gate-fix code readable (`statistical_test.py:196`,`:265-267`). agent-reported: the eval-gate fixes' MERGE-status (GitHub unverifiable here). HYPO: INV-A/B/C (proposed, ∉ repo); R→S "drift" = corollary of the R→S audit, not an executed run. Q: φ-values undefined pre-eval-run.
+FACT: 31 invariants + 5 agents + 5 skills + hooks read live; eval gate-fix code readable (`statistical_test.py:196`,`:265-267`); the eval-gate fixes are MERGED to main (verified 2026-06-23 on origin/main: PRs #64/#65/#66/#67/#68); scripts now 18 (skill-consult-check + selftest_skill-consult landed via #71/N10); new Agent-matcher hook skill-consult-check. HYPO: INV-A/B/C (proposed, ∉ repo). R→S "drift" remains — the gate is correct AND landed, but the published A/B RUN is still not done (no results committed); the binding step is now the RUN, not the gate. Q: φ-values undefined pre-eval-run.
