@@ -1,8 +1,13 @@
-# Design principles G0–G12 (sandbox/engineering)
+# Design principles G0–G13 (sandbox/engineering)
 
 These principles govern engineering decisions in M (sandbox) and, where noted, N.
 They are **engineering choices** [eng-choice], not grounded scientific laws — each is tagged accordingly.
 Where a §0 root applies it is noted; otherwise the tag is [eng-choice/HYPO].
+
+**Namespace note** (no renumber, §B): the design-principle IDs are `G0…G13` (this block). The
+invariant `INV-G13` (map+doctrine ¬prose-inject, below) is a SEPARATE `INV-` namespace — same numeral,
+different prefix, different object. Always carry the prefix: bare `G13` = this declarative-routing
+principle; `INV-G13` = the prose-inject invariant. IDs are never renumbered.
 
 Source of these definitions: distilled from `/workspace/plan/00-system.md` (superseded) + usage patterns in `dept/graph-plan-sandbox.md`.
 The superseded plan is the origin; Darwin (Γ) is the canonical home from this point.
@@ -72,6 +77,18 @@ G12 panic-degrade       a panic in a subsystem is caught, logged, and the subsys
                          the outer system continues. Specialisation of G6 for Go panic-recover paths.
                          grounding: R3 feedback/correction.
                          [eng-choice; grounded R3 via G6]
+
+G13 declarative-routing  routing is config-driven / declarative — a unit's destination is read from a
+                         declared policy (unit-type → repo; repo → lane), NEVER inferred from its content.
+                         a content-inferred route is a frozen/implicit gene (G1 churn + G4 violation): two
+                         routes to one destination, and a home that drifts with the content rather than with
+                         the config. the routing-policy + lane-map (G-route, registry-new.md) is the single
+                         declarative source; storozh READS it (advisory, ¬gate).
+                         grounding: G1 no-churn (single source, ¬duplicate routes) + G4 config-driven (the
+                         route is a config edit, ¬code/content inference; a constant/inferred home is a frozen
+                         gene, R4) + R7 pace-layering (knowledge-lane ≺ code-lane: a fast code-lane churn does
+                         NOT force a slow knowledge-lane re-route — keep this a declarative gene, ¬CORE-coupled).
+                         [eng-choice; grounded G1 + G4 (R4) + R7]
 ```
 
 ## Cross-references
@@ -87,11 +104,12 @@ G12 panic-degrade       a panic in a subsystem is caught, logged, and the subsys
 | G6 | dept/graph-plan-sandbox.md | R3 |
 | G8 | dept/graph-plan-sandbox.md | [eng-choice] |
 | G12 | dept/graph-plan-sandbox.md | R3 via G6 |
+| G13 | genome/registry-new.md (G-route routing-policy + lane-map); genome/projections.md (α_S) | G1 + G4 (R4) + R7 |
 | INV-G13 | genome/registry-M.md (G-sandbox sandbox_context V2); genome/design-principles.md (this file) | R6 + Λ:liu-2023 + Λ:shi-2023 |
 
 ## Ledger
 ```
-FACT   : G0/G2/G4/G5/G6/G12 grounded in §0 roots or Λ (noted above); G9 grounded Λ:saltzer-1975; INV-G13 grounded R6+Λ:liu-2023+Λ:shi-2023 — promoted from eng-choice to hard INVARIANT (owner decision, iter-mirabilis-135).
+FACT   : G0/G2/G4/G5/G6/G12 grounded in §0 roots or Λ (noted above); G9 grounded Λ:saltzer-1975; INV-G13 grounded R6+Λ:liu-2023+Λ:shi-2023 — promoted from eng-choice to hard INVARIANT (owner decision, iter-mirabilis-135). G13 declarative-routing grounded in existing G1 + G4 (R4) + R7 — a declarative gene, kept OUT of CORE (no fast-churn coupling); distinct namespace from INV-G13 (prefix carries the meaning).
 HYPO   : G1/G3/G8/G10/G11 are conventions without scientific grounding — engineering choices that have survived use.
 Q      : G7/G9/G10/G11 not observed in current file set (defined here for completeness).
 source : distilled from /workspace/plan (superseded); Darwin Γ is the canonical home.

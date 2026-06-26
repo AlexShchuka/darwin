@@ -27,7 +27,7 @@ R6  compression≈understanding   the shortest FAITHFUL description is the best 
                          boundary: exact compression is INCOMPUTABLE (Kolmogorov/Solomonoff incomputability — no computable universal prior exists; approximations only); faithful ≠ merely-short (truncation loses meaning). Separate result: no-free-lunch (Wolpert & Macready 1997) — no single optimization algorithm outperforms all others averaged over all problems; this is a distinct result from incomputability, not a corollary of R6.
                          Λ: kolmogorov-1965 · solomonoff-1964 · rissanen-1978 · li-vitanyi · wolpert-macready-1997
 R7  pace layering          in a nested system, layers change at different rates: inner/core slowest, periphery progressively faster; a slow layer is SHIELDED from a fast layer's churn — forced fast→slow change is a pathology, not the norm.
-                         ecosystem hierarchy (slow→fast): genome Γ ≺ organs {M,N} ≺ clothes ≺ environment ℛ.
+                         ecosystem hierarchy (slow→fast): genome Γ ≺ organs {M,N,S} ≺ clothes ≺ environment ℛ.
                          "clothes" = the replaceable outer layer the organs wear: config + tool/model choice + the compression quartet (RTK/headroom/caveman/localLLM) + installed skills/plugins. [ASSOC/HYPO — owner to confirm the layer's exact contents]
                          boundary: a DESIGN HEURISTIC / architectural pattern backed by cross-domain empirical regularity, NOT a natural law; "rate" = substitution/divergence rate (not recombination rate); does not predict where layer boundaries fall; does NOT forbid intentional slow-layer redesign — it forbids only fast-churn FORCING slow-layer change without independent justification.
                          Λ: brand-1994 · brand-1999 · brand-2018 · martin-2017 · zhang-li-2004
@@ -40,10 +40,11 @@ The owner's truth-criterion is R1+R2+R3 itself: no self-proof (R1) ⇒ three ind
 Γ   the genome : the description + held theorems-of-environment of the system
 M   sandbox (mirabilis) : mechanism — a PART of Γ, expressed as code (coral)
 N   harness (neuro-matrix) : behaviour — a PART of Γ, expressed as code (seahorse)
+S   shield (SolitaryEquilibriumShield) : knowledge/epistemos — a PART of Γ, the lesson/invariant corpus (allele α_S, knowledge-lane); owner decision, locked
 Λ   archive : the store of external SCIENTIFIC sources the claims anchor to
 𝒢  genes   𝒯={FACT,ASSOC,HYPO,Q}   Inv  held theorems-of-environment
 ```
-Ontology [grounded R4, developmental]: `reality ℛ → shapes → genome Γ → determines → organs {M, N}`. M and N are **parts of one genome**, not peers in an ocean. As in development: **expressed organ = f(heredity Γ, mutation, environment ℛ)**. The code is the expressed phenotype and lives in the organ repos — outside Γ; Γ holds the heredity (design + theorems), not the phenotype. So "Γ determines the organs" is generative (R4), but a developmental relation — **not** document-set-containment (the old `Desc⊆Γ` was false formalism, §A.5).
+Ontology [grounded R4, developmental]: `reality ℛ → shapes → genome Γ → determines → organs {M, N, S}`. M and N are code organs; S is the knowledge/epistemos organ (allele α_S, knowledge-lane — the lesson/invariant corpus; owner decision, locked). All three are **parts of one genome**, not peers in an ocean. As in development: **expressed organ = f(heredity Γ, mutation, environment ℛ)**. The code is the expressed phenotype and lives in the organ repos — outside Γ; Γ holds the heredity (design + theorems), not the phenotype. So "Γ determines the organs" is generative (R4), but a developmental relation — **not** document-set-containment (the old `Desc⊆Γ` was false formalism, §A.5).
 
 ### §A.1 — Generativity (not literal completeness)
 Γ is *generative* [grounded R4]: the held design+theorems, unfolded with mutation against the environment, produce the organs' expressed traits — as heredity (with mutation and environment) produces a phenotype, NOT as a document set that contains the code. The high-leverage act is getting the roots + initial invariants right, because they shape what unfolds (R4) — but this is a hypothesis about leverage [HYPO], not a determinism claim.
@@ -68,11 +69,11 @@ Notation is used ONLY for a real formal object (a defined structure, a machine-c
 
 ## §B — Gene algebra
 ```
-g = ⟨id, name, τ, α_M, α_N, E, δ, φ, home, grounding⟩
-  τ∈𝒯 · α_M,α_N allele or ⊥ · E enables/requires · δ presence · φ selection signal
+g = ⟨id, name, τ, α_M, α_N, α_S, E, δ, φ, home, grounding⟩
+  τ∈𝒯 · α_M,α_N,α_S allele or ⊥ · E enables/requires · δ presence · φ selection signal
   home      = WHERE it is expressed (code path / invariants.txt#N) — mechanical, MAY ROT
   grounding = WHY it holds : the scientific source in Λ (and/or a §0 root) — validity comes from HERE, not from home (R1/R2)
-expr(g) = {o : α_o(g)≠⊥}    biallelic(g) ↔ |expr(g)|=2
+expr(g) = {o : α_o(g)≠⊥},  o∈{M,N,S}    biallelic(g) ↔ |expr(g)|=2
 placement decided by evidence, ¬guess
 ```
 The split `home` vs `grounding` is the core discipline: a claim is valid because of its grounding (science), never because of where it lives (a word, a code line). [the §0 directive — supersedes the old `κ∈Λ` that pointed at code/words]
@@ -100,7 +101,7 @@ SCRATCH outside Γ : session-dumps, drafts, critic-findings — short-lived, exp
 Strata order = R7 applied to Γ (see §A.4). Law [R6]: Γ stores the COMPRESSED state + open work, never raw run-status / per-session logs / code-churn (those rot). Λ = scientific sources only (ref + claim + lastVerified), deduped.
 
 ## §H — Registry
-- BODY: `genome/registry-{M,N,new}.md` · `projections.md` · `mission.md` · `mined-invariants.md` · `design-principles.md` (G0–G12) · `archive/archive.md` (Λ).
+- BODY: `genome/registry-{M,N,new}.md` · `projections.md` · `mission.md` · `mined-invariants.md` · `design-principles.md` (G0–G13) · `archive/archive.md` (Λ).
 - DEPT: `dept/theory-of-everything.md` · `dept/graph-plan-{harness,sandbox,communication}.md`.
 - Vec: `vectors/{vectors,bugs,idea-exchange}.md`.
 

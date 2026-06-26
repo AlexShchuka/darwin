@@ -1,8 +1,9 @@
 # Darwin — genome · universe · library · theory of the ecosystem
 
-Named after Charles Darwin (evolution). This repository **is** the `𝕌_local` of a two-organ AI ecosystem: its **genome** (structure), its **environment ℛ / reality** (the external arbiter; invariants grounded in it), its **library** (external sources), its **theory** (formal model). Two organs live in it and are shaped by it:
+Named after Charles Darwin (evolution). This repository **is** the `𝕌_local` of a three-organ AI ecosystem: its **genome** (structure), its **environment ℛ / reality** (the external arbiter; invariants grounded in it), its **library** (external sources), its **theory** (formal model). Three organs live in it and are shaped by it:
 - **M** = mirabilis (sandbox / mechanism phenotype) — "coral" · `github.com/AlexShchuka/mirabilis`
 - **N** = neuro-matrix (harness / behaviour phenotype) — "seahorse" · `github.com/AlexShchuka/neuro-matrix`
+- **S** = SolitaryEquilibriumShield (knowledge / epistemos phenotype — α_S, knowledge-lane) · `github.com/AlexShchuka/SolitaryEquilibriumShield`
 
 ## What this repo is / is not
 - **IS** the complete, dense, modular description of the ecosystem's reality — readable by humans AND other AIs that mine it for ideas (the role the cross-AI advisory exemplar plays today; that pattern moves *here*).
@@ -45,11 +46,11 @@ GENOME.md                  CORE: §A carriers/𝕌_local · §A.1 completeness �
                            · §G strata (stability tiers) · §H registry index · §I ledger · §J operating loop
 genome/registry-M.md       𝒢|M coral genes (sandbox anatomy + work-items + INV-D/E/F)
 genome/registry-N.md       𝒢|N seahorse genes (invariants + agents + skills + hooks + eval + scripts + refs)
-genome/registry-new.md     𝒢|+ new genes (know/fleet/obs+/domain) + channel genes (sci/web/code)
-genome/projections.md      proj_M / proj_N : two graphs from one 𝒢 + ecosystem-graph (4 repos)
+genome/registry-new.md     𝒢|+ new genes (know/fleet/obs+/domain/route) + channel genes (sci/web/code)
+genome/projections.md      proj_M / proj_N : two graphs from one 𝒢 + ecosystem-graph (5 nodes: M,N,Γ,S + ℛ-external)
 genome/mission.md          owner vision: raid-target (T1/T2/T3) + owner–AI generation loop [HYPO/ASSOC]
 genome/mined-invariants.md candidate invariants from the memory dump (CI-1..14 + comms primitives)
-genome/design-principles.md design principles G0–G12 (sandbox/engineering; home for all Gn references)
+genome/design-principles.md design principles G0–G13 (sandbox/engineering; home for all Gn references)
 archive/archive.md         Λ external sources by department (dedup; upstream research-anchors.md)
 dept/theory-of-everything.md     the R→S audit — formal-methods spec + cross-disciplinary graph + dev-vector R→S/V1–V7
 dept/graph-plan-harness.md       what & how to improve N (vector: close R→S first)

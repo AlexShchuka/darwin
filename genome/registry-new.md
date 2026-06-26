@@ -27,7 +27,31 @@ G-domain  domain-packs               τ=HYPO (greenfield)
    α_M: ?  (Q — provision domain tools?)
    E: →"any task" (meta-vision)  ⊣Λ.{interviews,design,psychology,…}     δ: 𝕆-select     φ: task-success / domain
    ASSOC: JuliusBrussee/skills (grill-me, interface-kit, junior-to-senior)
+
+G-route   declarative routing / C3    τ=FACT (seed exists: the routing-policy + lane-map table below; config-driven, a unit's home is read, never inferred)
+   α_Γ: the routing-policy + lane-map below — a declarative gene (config, ¬content-inference). darwin DEFINES it.
+   α_M: mirabilis PRODUCES the changeset-manifest (C1) whose units this policy routes; the manifest is the routed object.
+   α_N: neuro-matrix storozh skill READS this policy (C4 routing-check) — flags a misroute, advisory-only (¬gate).
+   E: →deterministic unit→repo placement, no collision across parallel slices  ⊣G-route policy, ⊣C1 manifest     δ: per manifest-unit     φ: misroute-rate (storozh flags / units)
+   home: routing-policy + lane-map tables (this file) [MAY ROT — the tables are the mechanical home]
+   grounding: G4 config-driven (R4) + G1 no-churn (§A.3 a constant/inferred home is a frozen gene) + G13 (design-principles.md) + R7 pace-layering (knowledge-lane ≺ code-lane churn). Validity from HERE, not from the table's location (§B home vs grounding).
+   ASSOC: storozh routing-check (C4)     Q: per-unit-type φ once storozh runs (misroute counts pre-eval)
 ```
+
+## Routing-policy + lane-map (contract C3 — declarative; storozh READS, darwin DEFINES)
+Declarative only: a unit's destination is decided by its **declared unit-type**, never inferred from its content (G13). Every pointer is HYPO-until-checked at use-time (§J PRE-1) — the table is the home (MAY ROT), validity is the grounding above.
+```
+routing-policy   unit-type → repo (allele)
+  lesson | invariant            → SolitaryEquilibriumShield (α_S)   [knowledge units]
+  skill  | agent | hook         → neuro-matrix (α_N)               [behaviour units]
+  sandbox-mechanism | state     → mirabilis (α_M)                  [mechanism units]
+  genome | meta                 → darwin (α_Γ)                     [heredity units]
+
+lane-map         repo → lane
+  mirabilis, neuro-matrix       = code-lane        (PR + CI ; CI green-gate BYPASSED this session)
+  darwin, shield                = knowledge-lane   (push + storozh ; advisory storozh, ¬gate)
+```
+The lane-map is pace-layered (R7): the knowledge-lane (Γ, S) is the slow inner layer (push + advisory storozh), the code-lane (M, N) is the faster outer layer (PR + CI). A code-lane churn does NOT force a knowledge-lane change (R7 / G13).
 
 ## Channel genes (input R; feed Λ)
 ```
@@ -38,4 +62,4 @@ G-code  code/tests  α: repos(M,N) + verification-gate(N) + LSP   → direct FAC
 Channels materialize access to 𝕌 (§A); their output deduplicates into Λ (except G-code — direct executable fact).
 
 ## Ledger
-FACT: G-know seed=membackup, G-obs+ seed=obs, G-fleet seed=skills+agents, G-sci=arxiv-mcp (read / in-env). HYPO: G-domain (greenfield); G-know beyond sync. Q: α_M of G-domain; per-gene φ pre-eval-run.
+FACT: G-know seed=membackup, G-obs+ seed=obs, G-fleet seed=skills+agents, G-sci=arxiv-mcp (read / in-env); G-route = declarative routing-policy + lane-map (C3), grounded G4+G1+G13+R7 — config-driven, ¬content-inference. HYPO: G-domain (greenfield); G-know beyond sync; G-route φ (misroute-rate) unmeasured until storozh (C4) runs. Q: α_M of G-domain; per-gene φ pre-eval-run; α_S corpus contents (lesson|invariant home in shield, projections.md).
